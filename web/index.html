@@ -1,0 +1,400 @@
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <title>Mega Lider</title>
+	    <meta name="description" content="">
+	    <meta name="viewport" content="width=device-width">
+	    <script src="js/ajax.js"></script>
+	    <script src="js/scripts.js"></script>
+	</head>
+	<body onload="defaultPag()">
+		
+		<div id="Logeo">
+			<table width="300" border="0">
+				<tbody><tr>Login</tr>
+					<tr>
+						<td>Usuario:</td>
+						<td><input type="text" id="idusu"></td>
+					</tr>
+					<td><select id="CmbBD" onclick="cmbBases('CmbBD')"></select></td>
+					<tr>
+						<td>Contraseña:</td>
+						<td><input type="password" id="contraUsu"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button name="btn" onclick="getAjax(+'&usuario='+document.getElementById('idusu').value
+												+'&pass='+document.getElementById('contraUsu').value
+												+'&bd='+document.getElementById('CmbBD').options[document.getElementById('CmbBD').selectedIndex].value,
+					        					'GET',null,'notificar')">
+			Conectar</button>
+		</div>
+
+		<div class="Opciones" style="float: left; width: 30%">
+			<ul style="font-size: 24pt">
+		      	<li><input type="checkBox" id="cons" onclick="camCheck('inserts', 'modifs','elimis'); camBtn('cons','Consultas'); appearDiv('cons')" value="consultitas">Consultas</li>
+		      	<li><input type="checkBox" id="inserts" onclick="camCheck('cons', 'modifs','elimis'); camBtn('inserts','Insertar')">Insertar</li>
+		      	<li><input type="checkBox" id="modifs" onclick="camCheck('cons','inserts','elimis'); camBtn('modifs', 'Modificar')">Modificar</li>
+		      	<li><input type="checkBox" id="elimis" onclick="camCheck('cons','inserts', 'modifs'); camBtn('elimis', 'Eliminar')">Eliminar</li>
+	    	</ul>
+	    	<ul style="font-size: 16pt">
+	    		<li><input type="checkBox" id="pers" onclick="appearDiv('pers')" value="tabsPersona">Persona</li>
+	    		<li><input type="checkBox" id="inve" onclick="appearDiv('inve')" value="tabInventario">Inventario</li>
+	    		<li><input type="checkBox" id="fact" onclick="appearDiv('fact')" value="tabFactura">Factura</li>
+	    		<li><input type="checkBox" id="prod" onclick="appearDiv('prod')" value="tabProducto">Producto</li>
+			</ul>
+		</div>
+
+		<div class="Princiapal" style="float: left; width: 40%">
+
+			<div id="tabsPersona">
+				<table width="360" border="0">
+				    <tbody><tr>Tabla Persona</tr>
+					    <tr>
+					        <td>ID:</td>
+					        <td><input type="TEXT" id="idpersona"></td>
+					    </tr>
+					    <tr>
+					        <td>Nombre:</td>
+					        <td><input type="TEXT" id="nombre"></td>
+					    </tr>
+					    <tr>
+					        <td>Apellido1:</td>
+					        <td><input type="TEXT" id="apellido1"></td>
+					    </tr>
+					    <tr>
+					        <td>Apellido2:</td>
+					        <td><input type="TEXT" id="apellido2"></td>
+					    </tr>
+					    <tr>
+					        <td>Correo:</td>
+					        <td><input type="email" id="correo"></td>
+					    </tr>
+					    <tr>
+					        <td>Contraseña:</td>
+					        <td><input type="password" id="contra1"></td>
+					    </tr>
+					    <tr>
+					        <td>Verf.Contraseña:</td>
+					        <td><input type="password" id="contra2"></td>
+					    </tr>
+					    <tr>
+					        <td>tipo:</td>
+					        <td>
+					        	<select id="tipo">
+					        		<option value="A">Administrador</option>
+					        		<option value="E">Empleado</option>
+					        	</select>
+					    	</td>
+					    </tr>
+					</tbody>
+				</table>
+
+				<table width="400" border="0">
+				    <tbody><tr>Tabla Salario</tr>
+					    <tr>
+					        <td>Monto:</td>
+					        <td><input type="TEXT" id="montoSalario"></td>
+					    </tr>
+
+					    <tr>
+					        <td>Fecha:</td>
+					        <td><input type="DATE" id="fechaPago"></td>
+					    </tr>
+					    <tr>
+					        <td>Tipo de Pago:</td>
+					        <td><input type="TEXT" id="tipoPago"></td>
+					    </tr>
+					</tbody>
+				</table>
+
+				<table width="510" border="0">
+				    <tbody><tr>Tabla Telefono</tr>
+					    <tr>
+					        <td>Telefono:</td>
+					        <td><input type="TEXT" id="telefono"></td>
+					    </tr>
+					    <tr>
+					    	<td></td>
+					    	<td>
+					    		<button name="btn" onclick="getAjax('id='+document.getElementById('idpersona').value
+					        						 +'&nombre='+document.getElementById('nombre').value
+					        						 +'&apellido1='+document.getElementById('apellido1').value
+					        						 +'&apellido2='+document.getElementById('apellido2').value
+					        						 +'&correo='+document.getElementById('correo').value
+					        						 +'&tipo='+document.getElementById('tipo').options[document.getElementById('tipo').selectedIndex].value
+					        						 +'&contra1='+document.getElementById('contra1').value
+					        						 +'&contra2='+document.getElementById('contra2').value
+					        						 +'&montoSalario='+document.getElementById('montoSalario').value
+					        						 +'&fechaPago='+document.getElementById('fechaPago').value
+					        						 +'&tipoPago='+document.getElementById('tipoPago').value
+					        						 +'&telefono='+document.getElementById('telefono').value
+					        						 +'&op=Pers',
+					        						 'GET',null,'notificar')">
+					        	Realizar Accion</button>
+					    	</td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div id="tabInventario">
+				<table width="320" border="0">
+				    <tbody><tr>Tabla Inventario</tr>
+				    	<tr>
+				    		<td>ID Inv:</td>
+				    		<td><input type="number" id="idInv" min="1"></td>
+				    	</tr>
+					    <tr>
+					        <td>fecha Registro:</td>
+					        <td><input type="DATE" id="fechaReg"></td>
+					    </tr>
+					    <tr>
+					        <td>Productos:</td>
+					        <td><select id="CmbPro" onclick="cmbProductos('CmbPro')"></select></td>
+					        <td>Cantidad:</td>
+					        <td><input type="number" min="1" id="cantProInve"></td>
+					    </tr>
+					    <tr>
+					    	<td></td>
+					      	<td>
+					        	<button name="btn" onclick="getAjax('id='+document.getElementById('idusu').value
+					        							+'&idInv='+document.getElementById('idInv').value
+					        							+'&fechaReg='+document.getElementById('fechaReg').value
+					        							+'&idPro='+document.getElementById('CmbPro').options[document.getElementById('CmbPro').selectedIndex].value
+					        							+'&cant='+document.getElementById('cantProInve').value
+					        							+'&op=Inve',
+					        						 	'GET',null,'notificar')">
+					        	Realizar Accion</button>
+					        </td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="tabFactura">
+				<table width="360" border="0">
+				    <tbody><tr>Tabla Factura</tr>
+					    <tr>
+					        <td>ID Factura:</td>
+					        <td><input type="number" min="1" id="idFac"></td>
+					    </tr>
+					    <tr>
+					        <td>fecha Registro:</td>
+					        <td><input type="DATE" id="fechaFactura"></td>
+					    </tr>
+					    <tr>
+					        <td>Productos:</td>
+					        <td><select id="ComboProductos" onclick="cmbProductos('ComboProductos')"></select></td>
+					        <td>Cantidad:</td>
+					        <td><input type="number" min="1" id="cantFac"></td>
+					    </tr>
+					    <tr>
+					        <td>Detalles:</td>
+					        <td><input type="TEXT" id="detallesFactura"></td>
+					    </tr>
+					    <tr>
+					        <td>Monto:</td>
+					        <td><input type="TEXT" id="montoFactura"></td>
+					    </tr>
+					    <tr>
+					        <td>Cliente:</td>
+					        <td><input type="TEXT" id="nombreCliente"></td>
+					    </tr>
+					    <tr>
+					        <td></td>
+					      	<td>
+								<button name="btn" onclick="getAjax('idFac='+document.getElementById('idFac').value
+																   +'&fechaFac='+document.getElementById('fechaFactura').value
+																   +'&idprod='+document.getElementById('ComboProductos').options[document.getElementById('ComboProductos').selectedIndex].value
+																   +'&detalle='+document.getElementById('detallesFactura').value
+																   +'&monto='+document.getElementById('montoFactura').value
+																   +'&cliente='+document.getElementById('nombreCliente').value
+																   +'&cantFac='+document.getElementById('cantFac').value
+																   ,'GET',null,'notificar')">
+								Realizar Accion</button> 
+					        </td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="tabProducto">
+				<table width="640" border="0">
+				    <tbody><tr>Tabla Producto</tr>
+					    <tr>
+					        <td>ID Producto:</td>
+					        <td><input type="TEXT" id="idProducto"></td>
+					    </tr>
+					    <tr>
+					        <td>Precio:</td>
+					        <td><input type="TEXT" id="precio"></td>
+					    </tr>
+					    <tr>
+					        <td>Descripcion:</td>
+					        <td><input type="TEXT" id="desProdu"></td>
+					    </tr>
+					    <tr>
+					        <td>Tipo:</td>
+					        <td>
+					        	<select id="tipoProducto">
+					        		<option value="1">Zapateria</option>
+					        		<option value="2">Escolar</option>
+					        		<option value="3">Muebleria</option>
+					        		<option value="4">Ropa</option>
+					        	</select>
+					        </td>
+					    </tr>
+					    <tr>
+					        <td>Marca:</td>
+					        <td>
+					        	<select id="marcas"></select>
+					        </td>
+					        <td>sector:</td>
+					        <td>
+					        	<select id="sectores"></select>
+					        </td>
+					        <td>Color:</td>
+					        <td>
+					        	<select id="colores"></select>
+					        </td>
+					    </tr>
+					    <tr>
+					        <td>Garantía:</td>
+					        <td><input type="DATE" id="garantia"></td>
+					    </tr>
+					    <tr>
+					        <td>Talla:</td>
+					        <td><input type="TEXT" id="talla"></td>
+					    </tr>
+					    <tr>
+					        <td>Género:</td>
+					        <td>
+					        	<select id="genero">
+						        	<option value="F">Femenino</option>
+						        	<option value="M">Masculino</option>
+					        	</select>
+					        </td>
+					    </tr>
+					    <tr>
+					        <td></td>
+					      	<td>
+					        	<button name="btn" onclick="getAjax('idpro='+document.getElementById('idProducto').value
+					        									   +'&precio='+document.getElementById('precio').value
+					        									   +'&desprodu='+document.getElementById('desProdu').value
+					        									   +'&marca='+document.getElementById('marcas').options[document.getElementById('marcas').selectedIndex].value
+					        									   +'&sector='+document.getElementById('sectores').options[document.getElementById('sectores').selectedIndex].value
+					        									   +'&color='+document.getElementById('colores').options[document.getElementById('colores').selectedIndex].value
+					        									   +'&gen='+document.getElementById('genero').options[document.getElementById('genero').selectedIndex].value
+					        									   +'&tipoProdu='+document.getElementById('tipoProducto').options[document.getElementById('tipoProducto').selectedIndex].value
+					        									   +'&talla='+document.getElementById('talla').value
+					        									   +'&garantia='+document.getElementById('garantia').value
+					        									   +'&op=Prod'
+					        									   ,'GET',null,'notificar')">
+					        	Realizar Accion</button>
+					        </td>
+					    </tr>
+					</tbody>
+				</table>
+			</div>
+			<p id="notificar"></p>
+		</div>
+		<div id="consultitas" style="float: left; width: 30%">
+			<table width="640" border="0">
+				    <tbody><tr>Consulta 1:</tr><tr>encontrar producto por marca, color y genero</tr>
+					    <tr>
+					        <td>Marca:</td>
+					        <td>
+					        	<select id="marcasC1"></select>
+					        </td>
+					    </tr>
+					    <tr>
+					        <td>Color:</td>
+					        <td>
+					        	<select id="coloresC1"></select>
+					        </td>
+					    </tr>
+					    <tr>
+					        <td>Género:</td>
+					        <td>
+					        	<select id="generoC1">
+						        	<option value="F">Femenino</option>
+						        	<option value="M">Masculino</option>
+					        	</select>
+					        </td>
+					    </tr>
+					    <tr>
+					      	<td>
+					        	<button name="btnC" onclick="getAjax('marca='+document.getElementById('marcasC1').options[document.getElementById('marcasC1').selectedIndex].text
+					        									   +'&color='+document.getElementById('coloresC1').options[document.getElementById('coloresC1').selectedIndex].text
+					        									   +'&gen='+document.getElementById('generoC1').options[document.getElementById('generoC1').selectedIndex].text
+					        									   +'&op=C1'
+					        									   ,'GET',null,'notificarC')">
+					        	Consultar</button>
+					        </td>
+					    </tr>
+					</tbody>
+			</table>
+
+			<table width="640" border="0">
+			    <tbody><tr>Consulta 2:</tr><tr>Numeros de las personas de salario mayor al que desee</tr>
+				    <tr>
+				    	<td>Monto:</td>
+				    	<td><input type="text" id="montoC2"></td>
+				    </tr>
+				    <tr>
+				      	<td>
+				        	<button name="btnC" onclick="getAjax('monto='+document.getElementById('montoC2').value
+				        									    +'&op=C2'
+				        									    ,'GET',null,'notificarC')">
+				        	Consultar</button>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+
+			<table width="640" border="0">
+			    <tbody><tr>Consulta 3:</tr><tr>Vendedor que vendio mas zapatos de una talla</tr>
+				    <tr>
+				    	<td>Monto:</td>
+				    	<td><input type="text" id="nombreC3"></td>
+				    </tr>
+				    <tr>
+				      	<td>
+				        	<button name="btnC" onclick="getAjax('nombre='+document.getElementById('nombreC3').value
+				        									    +'&op=C3'
+				        									    ,'GET',null,'notificarC')">
+				        	Consultar</button>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+
+			<table width="640" border="0">
+			    <tbody><tr>Consulta 4:</tr><tr>Productos que aun tienen garantia</tr>
+				    <tr>
+				      	<td>
+				        	<button name="btnC" onclick="getAjax('op=C4'
+				        									    ,'GET',null,'notificarC')">
+				        	Consultar</button>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+
+			<table width="640" border="0">
+			    <tbody><tr>Consulta 5:</tr><tr>cantidad de personas que tienen más de un teléfono</tr>
+				    <tr>
+				      	<td>
+				        	<button name="btnC" onclick="getAjax('&op=C5'
+				        									    ,'GET',null,'notificarC')">
+				        	Consultar</button>
+				        </td>
+				    </tr>
+				</tbody>
+			</table>
+			<p id="notificarC"></p>
+		</div> 
+	</body>
+</html>
