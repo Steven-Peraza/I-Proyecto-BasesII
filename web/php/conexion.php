@@ -2,7 +2,7 @@
 
 
 function predeterminadaConexion(){
-    $db = mysql_connect('172.24.74.40', 'sa', 'kezito123A')
+    $db = mysql_connect('localhost', 'sa', 'kezito123A')
         or die('No se pudo conectar: ' . mysql_error());
     
         echo 'Connected successfully';
@@ -10,20 +10,13 @@ function predeterminadaConexion(){
         mysql_select_db('master', $db) or die('No se pudo seleccionar la base de datos');
 }
 
-function petidicionConectar()
+function petidicionConectar($bd, $usuario, $pass)
 {
-    isset(  $_GET['usuario']) && !empty($_GET['usuario']
-            $_GET['pass']) && !empty($_GET['pass']
-            $_GET['bd']) && !empty($_GET['bd']
-            
-    ){
-        $db = mysql_connect('172.24.74.40', 'usuario', 'pass')
-        or die('No se pudo conectar: ' . mysql_error());
-    
-        echo 'Connected successfully';
-        
-        mysql_select_db('bd') or die('No se pudo seleccionar la base de datos');
+    $db = mysql_connect('localhost', '$usuario', '$pass')
+    or die('No se pudo conectar: ' . mysql_error());
 
-    }
+    echo 'Connected successfully';
+    
+    mysql_select_db('$bd') or die('No se pudo seleccionar la base de datos');
 }
 ?>

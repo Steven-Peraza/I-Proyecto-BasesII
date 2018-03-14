@@ -2,8 +2,15 @@
 include 'conexion.php';
 
 //Elegir si cargar la master o una base de datos especifica
-if($_GET['bd']) && !empty($_GET['bd']){
-    $db=petidicionConectar();
+if( isset($_GET['bd']) && !empty($_GET['bd'])
+){
+    if(	isset($_GET['usuario']) && !empty($_GET['usuario']) &&
+    	isset($_GET['pass']) && !empty($_GET['pass'])
+    ){
+    	$db=petidicionConectar();
+    }else{
+    	echo "Introduzca un usuario y contraseña"
+    }
 }else{
     $db = predeterminadaConexion();
 }
