@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title:{
+                    text: "Espacio del disco",
+                    horizontalAlign: "center"
+                },
+                data: [{
+                    type: "doughnut",
+                    startAngle: 60,
+                    radius: "90%",
+                    innerRadius: "55%",
+                    indexLabelFontSize: 17,
+                    explodeOnClick: false,
+                    indexLabel: "{label} - #percent%",
+                    toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+                    dataPoints: [
+                        { y: 4096, label: "Espacio Usado" },
+                        { y: 1024, label: "Espacio Disponible" }
+                    ]
+                }]
+            });
+            chart.render();
+
+        }
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 250px; width: 75%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>
