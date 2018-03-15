@@ -1,0 +1,69 @@
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <title>Mega Lider</title>
+	    <meta name="description" content="">
+	    <meta name="viewport" content="width=device-width">
+	    <script src="js/ajax.js"></script>
+	    <script src="js/scripts.js"></script>
+	</head>
+	<body onload="defaultPag()">
+		
+		<div id="Logeo">
+			<table width="300" border="0">
+				<tbody><tr>Login</tr>
+					<tr>
+						<td>Usuario:</td>
+						<td><input type="text" id="idusu"></td>
+					</tr>
+					<tr>
+						<td>Contraseña:</td>
+						<td><input type="password" id="contraUsu"></td>
+					</tr>
+					<tr>
+						<td><select id="CmbBD" onclick="cmbBases('CmbBD')"></select></td>
+					</tr>
+				</tbody>
+			</table>
+			<button name="btn" onclick="getAjax('bd='+document.getElementById('CmbBD').options[document.getElementById('CmbBD').selectedIndex].value,
+					        					'GET',null,'notificar')">
+			Conectar</button>
+		</div>
+
+		<div class="Opciones" style="float: left; width: 30%">
+			<ul style="font-size: 24pt">
+		      	<li><input type="checkBox" id="apear" onclick="appearDiv('apear')" value="Esqueleto">aparecer</li>
+	    	</ul>
+		</div>
+
+		<div class="Princiapal" style="float: left; width: 40%">
+
+			<div id="Esqueleto">
+				<table width="360" border="0">
+				    <tbody><tr>Tabla nombre</tr>
+					    <tr>
+					        <td>dato:</td>
+					        <td><input type="TEXT" id="idpersona"></td>
+					    </tr>
+					    <tr>
+					        <td>dato:</td>
+					        <td>
+					        	<select id="tipo">
+					        		<option value="A">A</option>
+					        		<option value="E">B</option>
+					        	</select>
+					    	</td>
+					    </tr>
+					</tbody>
+				</table>
+
+			</div>
+
+			<p id="notificar"></p>
+		</div>
+		<div id="consultitas" style="float: left; width: 30%">
+			<p id="notificarC"></p>
+		</div> 
+	</body>
+</html>
