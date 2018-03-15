@@ -30,7 +30,9 @@ div.Login {
 }
 
 div.Opciones {
-	float: left;
+	float: left;	
+	width: 60%;
+
 }
 
 div.Graficos {
@@ -38,11 +40,8 @@ div.Graficos {
 	overflow: auto;
 	float: right;
 	
-	border-style: solid;
-	border-width: 2px;
-	
-	margin-left: 50%;
-	border: 10px;
+	height: 100%; 
+	width: 40%;
 }
 
 ul {
