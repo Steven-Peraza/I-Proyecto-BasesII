@@ -54,7 +54,7 @@
 
 		<div id="seleccionBD" class="seleBD">
 			<select id="CmbBD" onclick="cmbBases('CmbBD')" onchange="logData(document.getElementById('CmbBD').value, null, null, null, null)">
-				<option value="test">master</option>
+				<option value="master">master</option>
 			</select>
 		</div>
 		
@@ -79,18 +79,18 @@
 		<div class="Principal">
 
 			<div class="Encabezado"> 
-
+				<p id="cabeza"></p>
 			</div>
 
-			<div class="Opciones">
+			<div class="main_nav">
 				<ul>
 			      	<li><a href="#Discos">Discos</a> 
-			      		<ol><a href="#crearDisco">Crear</a></ol>
-			      		<ol><a href="#modificarDisco">Modificar</a></ol>
-			      		<ol><a href="#eliminarDisco">Eliminar(En proceso)</a></ol>
+			      		<ul><a href="#crearDisco">Crear</a></ul>
+			      		<ul><a href="#modificarDisco">Modificar</a></ul>
+			      		<ul><a href="#eliminarDisco">Eliminar(En proceso)</a></ul>
 			      	</li>
 			      	<li><a href="#GruposArchivos">Grupos de archivos</a> 
-			      		<ol><a href="#eliminarDisco">Eliminar(En proceso)</a></ol>
+			      		<ul><a href="#Crear">crear</a></ul>
 			      	</li>
 			      	<li><a href="#Graficos">Graficos</a></li>
 		    	</ul>
