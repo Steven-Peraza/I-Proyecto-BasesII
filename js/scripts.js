@@ -19,9 +19,9 @@ function cmbBases(cmbname){
     {
         if (this.readyState == 4 && this.status == 200)
         {
-            CmbBD=document.getElementById(cmbname);
-            nodoPadre_marcas=cmbMarcas.parentNode;
-            nodoPadre_marcas.removeChild(cmbMarcas);
+            CmbBDs=document.getElementById(cmbname);
+            nodoPadre_marcas=CmbBDs.parentNode;
+            nodoPadre_marcas.removeChild(CmbBDs);
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
