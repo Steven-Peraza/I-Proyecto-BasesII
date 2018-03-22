@@ -57,6 +57,24 @@
 				<option value="master">master</option>
 			</select>
 		</div>
+		
+		<div id="FGS">
+				<table width="360" border="0">
+				    <tbody><tr>Tabla FGS</tr>
+					    <tr>
+					        <td>Nombre del FG:</td>
+					        <td><input type="TEXT" id="fgname"></td>
+					    </tr>
+						<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+												   +'&puerto='+document.getElementById('puerto').value
+												   +'&fgname='+document.getElementById('fgname').value
+												   +'&fun=FGDB',
+						        					'GET',null,'notificarfg')">
+				Crear FG</button>
+					</tbody>
+				</table>
+				<p id="notificarfg"></p>
+			</div>
 
 		<div class="Principal">
 

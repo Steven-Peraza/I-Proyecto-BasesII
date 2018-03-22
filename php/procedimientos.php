@@ -2,7 +2,7 @@
 include 'conexion.php';
 //Elegir si cargar la master o una base de datos especifica
 
-$db = null;
+$conn = null;
 $cmamo = "";
 if( isset($_GET['bd']) && !empty($_GET['bd'])
 ){
@@ -11,7 +11,7 @@ if( isset($_GET['bd']) && !empty($_GET['bd'])
     	isset($_GET['ip']) && !empty($_GET['ip'])		&&
     	isset($_GET['puerto']) && !empty($_GET['puerto'])
     ){
-    	$db = conexion($_GET['bd'],$_GET['usuario'],$_GET['pass'],$_GET['ip'],$_GET['puerto']);
+    	$conn = conexion($_GET['bd'],$_GET['usuario'],$_GET['pass'],$_GET['ip'],$_GET['puerto']);
     }else{
     	echo "Introduzca un usuario y contraseña";
     }
@@ -25,32 +25,17 @@ if(isset($_GET['fun'])){
 		echo $cmamo2;
     }
 	//llamada al procedimiento almacenado de creacion de discos extra de archivos...
-	else if($_GET['fun'] == 'FilesDB'){
-        $SQL = "DiscosPlusPlus (@nombreDB nvarchar(50),@fileName nvarchar(50),@rutaFis nvarchar(100),@size int, 
-								@maxsize int, @growth int, @fg nvarchar(50))";
-		// Execute query:
-		$resultado = sqlsrv_query($db,$SQL) 
-			or die('A error occured: ' . mysql_error());
-		
-		//$row = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
-        do {
-		   while ($row = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
-			   // Loop through each result set and add to result array
-			   $cmamo = $cmamo . ",". $row['name'];
-		   }
-		} while (sqlsrv_next_result($resultado));
-		
-		//print_r ($cmamo);
-		return $cmamo;
+	else if(($_GET['fun'] == 'FGDB') &&( isset($_GET['fgname']) && !empty($_GET['fgname']))){
+        NewFileGroups($_GET['bd'],$_GET['fgname']);
     }
 }
 
 //funcion que selecciona la db a utilizar...
 function DBselection(){
-	global $db, $cmamo;
+	global $conn, $cmamo;
 	$SQL = "SELECT name from sys.databases";
 		// Execute query:
-		$resultado = sqlsrv_query($db,$SQL) 
+		$resultado = sqlsrv_query($conn,$SQL) 
 			or die('A error occured: ' . mysql_error());
 		
 		//$row = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
@@ -63,4 +48,34 @@ function DBselection(){
 		
 		//print_r ($cmamo);
 		return $cmamo;
+}
+
+
+//funcion que crea un nuevo file...
+function NewFileGroups($bd,$fgn){
+	global $conn;
+
+	$SQL = "exec FilegroupsPlusPlus ?,?";
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fgn));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	echo "ACM1PT";
+
+}	
+
+
+
+//funcion que crea un nuevo file...
+function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
+	global $conn, $cmamo;
+	/*'test','ACM1PT2','C:\Users\Steven\Desktop\TEC\Semestre 5\Bases II',5, 
+								20, 5, 'Soy_un_manco_en_Dota'*/
+	$SQL = "DiscosPlusPlus ('$bd','$fn','$ruta','$size', 
+								'$max', '$grogro', '$filegroup')";
+		// Execute query:
+		$resultado = sqlsrv_query($conn,$SQL) 
+			or die('A error occured: ' . mysql_error());
+		
 }
