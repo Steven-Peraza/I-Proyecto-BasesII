@@ -21,7 +21,13 @@ if( isset($_GET['bd']) && !empty($_GET['bd'])
 
 if(isset($_GET['fun'])){
     if($_GET['fun'] == 'CmbBD'){
-        $SQL = "SELECT name from sys.databases";
+        $cmamo2 = DBselection();
+		echo $cmamo2;
+    }
+	//llamada al procedimiento almacenado de creacion de discos extra de archivos...
+	else if($_GET['fun'] == 'FilesDB'){
+        $SQL = "DiscosPlusPlus (@nombreDB nvarchar(50),@fileName nvarchar(50),@rutaFis nvarchar(100),@size int, 
+								@maxsize int, @growth int, @fg nvarchar(50))";
 		// Execute query:
 		$resultado = sqlsrv_query($db,$SQL) 
 			or die('A error occured: ' . mysql_error());
@@ -34,7 +40,27 @@ if(isset($_GET['fun'])){
 		   }
 		} while (sqlsrv_next_result($resultado));
 		
-		print_r ($cmamo);
+		//print_r ($cmamo);
 		return $cmamo;
     }
+}
+
+//funcion que selecciona la db a utilizar...
+function DBselection(){
+	global $db, $cmamo;
+	$SQL = "SELECT name from sys.databases";
+		// Execute query:
+		$resultado = sqlsrv_query($db,$SQL) 
+			or die('A error occured: ' . mysql_error());
+		
+		//$row = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
+        do {
+		   while ($row = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['name'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+		
+		//print_r ($cmamo);
+		return $cmamo;
 }

@@ -5,7 +5,6 @@ function getAjax(url,tipo,parametros,idNotificacion)
                  +"&pass="+document.getElementById('contraUsu').value
                  +"&bd="+g_bd;
     url = 'php/procedimientos.php?' + url + usuario;
-    document.getElementById(idNotificacion).innerHTML = url;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {

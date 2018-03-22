@@ -47,7 +47,7 @@ function cmbBases(cmbname){
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
-			document.getElementById('notificarC').innerHTML = this.responseText;
+			//document.getElementById('notificarC').innerHTML = this.responseText;
             obj_marcas=this.responseText.split(",");
             for (var i in obj_marcas)
             {
