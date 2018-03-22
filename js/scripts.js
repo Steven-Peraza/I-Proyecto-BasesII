@@ -25,7 +25,7 @@ function cmbBases(cmbname){
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
-            obj_marcas=eval('('+this.responseText+')');
+            obj_marcas=this.responseText;
             for (var i in obj_marcas)
             {
                 var nodoOption = document.createElement("option");

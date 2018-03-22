@@ -44,6 +44,11 @@ div.Graficos {
 	width: 40%;
 }
 
+div.seleBD {
+	border: solid;
+	background-color: red;
+}
+
 ul {
     list-style-type: none;
     margin: 0;

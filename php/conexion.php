@@ -17,12 +17,8 @@ function conexion($bd,$usuario,$pass,$ip,$puerto){
 
 //        or die('No se pudo conectar: ' . mysql_error());
     
-	if ($conn) {
-		echo 'Connected successfully';
-	}
-
-	else {
-			die('Algo fue mal mientras se conectaba a MSSQL');
+	if (!$conn) {
+		die('Algo fue mal mientras se conectaba a MSSQL');
 	}
 	return $conn;
 }
