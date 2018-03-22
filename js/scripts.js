@@ -6,8 +6,9 @@ var g_puerto = "";
 var conn = "on";
 
 function logData(bd, usu, pass, ip, puerto){
-    if(bd != null){ 
+    if(bd != null){
         g_bd = bd;
+		console.log(bd);
     }
     if(usu != null){ 
         g_usu = usu;
@@ -26,7 +27,7 @@ function logData(bd, usu, pass, ip, puerto){
 function logDisapper(v_div){
     if(conn == "on"){
         document.getElementById(v_div).style.display = "none";
-        document.getElementById(v_div).pseudoStyle("after","display","none");
+        //document.getElementById(v_div).pseudoStyle("after","display","none");
     }else{
         document.getElementById(v_div).style.display = "block";
     }
