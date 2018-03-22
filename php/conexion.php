@@ -1,6 +1,5 @@
 <?php
 
-
 function conexion($bd,$usuario,$pass,$ip,$puerto){
 	//phpinfo();
     $serverName = "$ip"; 

@@ -38,9 +38,15 @@
 						</tr>
 					</tbody>
 				</table>
-				<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+				<button name="btn" onclick="logData(document.getElementById('CmbBD').value,
+						        					document.getElementById('idusu').value,
+						        					document.getElementById('contraUsu').value,
+						        					document.getElementById('ip').value,
+						        					document.getElementById('puerto').value);
+											
+											getAjax('ip='+document.getElementById('ip').value
 												   +'&puerto='+document.getElementById('puerto').value,
-						        					'GET',null,'notificar')">
+						        					'GET',null,'notificarC')">
 				Conectar</button>
 			</div>
 

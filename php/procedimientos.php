@@ -15,6 +15,8 @@ if( isset($_GET['bd']) && !empty($_GET['bd'])
     }else{
     	echo "Introduzca un usuario y contraseña";
     }
+}else{
+	echo "no encontró la base";
 }	
 
 if(isset($_GET['fun'])){

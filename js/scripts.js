@@ -1,13 +1,15 @@
-var trans;
-function camCheck(cb1, cb2, cb3)
-{
-	var des1 = document.getElementById(cb1);
-	var des2 = document.getElementById(cb2);
-	var des3 = document.getElementById(cb3);
+var g_bd;
+var g_usu;
+var g_pass;
+var g_ip;
+var g_puerto;
 
-	des1.checked = false;
-	des2.checked = false;
-	des3.checked = false;
+function logData(bd, usu, pass, ip, puerto){
+    g_bd = bd;
+    g_usu = usu;
+    g_pass = pass;
+    g_ip = ip;
+    g_puerto = puerto;
 }
 
 function defaultPag(){
@@ -25,12 +27,12 @@ function cmbBases(cmbname){
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
-            obj_marcas=this.responseText;
+            obj_marcas= this.responseText.split(",");
             for (var i in obj_marcas)
             {
                 var nodoOption = document.createElement("option");
-                var textnode = document.createTextNode(obj_marcas[i].nombremarca);
-                nodoOption.value = obj_marcas[i].idmarca;
+                var textnode = document.createTextNode(obj_marcas[i]);
+                nodoOption.value = obj_marcas[i];
                 nodoOption.appendChild(textnode);
                 nodoSelect.appendChild(nodoOption);
             }

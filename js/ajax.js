@@ -3,9 +3,9 @@ function getAjax(url,tipo,parametros,idNotificacion)
     borrarNotificaciones(idNotificacion);
     var usuario = "&usuario="+document.getElementById('idusu').value
                  +"&pass="+document.getElementById('contraUsu').value
-                 +"&bd="+document.getElementById('CmbBD').value;
-    
+                 +"&bd="+g_bd;
     url = 'php/procedimientos.php?' + url + usuario;
+    document.getElementById(idNotificacion).innerHTML = url;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
