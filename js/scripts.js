@@ -21,13 +21,14 @@ function cmbBases(cmbname){
     {
         if (this.readyState == 4 && this.status == 200)
         {
-            CmbBD=document.getElementById(cmbname);
-            nodoPadre_marcas=cmbMarcas.parentNode;
-            nodoPadre_marcas.removeChild(cmbMarcas);
+            CmbBDs=document.getElementById(cmbname);
+            nodoPadre_marcas=CmbBDs.parentNode;
+            nodoPadre_marcas.removeChild(CmbBDs);
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
-            obj_marcas= this.responseText.split(",");
+			document.getElementById('notificarC').innerHTML = this.responseText;
+            obj_marcas=this.responseText.split(",");
             for (var i in obj_marcas)
             {
                 var nodoOption = document.createElement("option");

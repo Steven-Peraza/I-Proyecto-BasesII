@@ -3,7 +3,7 @@ include 'conexion.php';
 //Elegir si cargar la master o una base de datos especifica
 
 $db = null;
-
+$cmamo = "";
 if( isset($_GET['bd']) && !empty($_GET['bd'])
 ){
     if(	isset($_GET['usuario']) && !empty($_GET['usuario']) &&
@@ -22,7 +22,6 @@ if( isset($_GET['bd']) && !empty($_GET['bd'])
 if(isset($_GET['fun'])){
     if($_GET['fun'] == 'CmbBD'){
         $SQL = "SELECT name from sys.databases";
-		$result = array();
 		// Execute query:
 		$resultado = sqlsrv_query($db,$SQL) 
 			or die('A error occured: ' . mysql_error());
@@ -31,10 +30,11 @@ if(isset($_GET['fun'])){
         do {
 		   while ($row = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
 			   // Loop through each result set and add to result array
-			   $result[] = $row;
+			   $cmamo = $cmamo . ",". $row['name'];
 		   }
 		} while (sqlsrv_next_result($resultado));
 		
-		return $result;
+		print_r ($cmamo);
+		return $cmamo;
     }
 }

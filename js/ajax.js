@@ -20,7 +20,12 @@ function getAjax(url,tipo,parametros,idNotificacion)
 
 function cmbAjax(url,parametros, cambioEstado)
 {
-    url = 'php/procedimientos.php?fun=' + url;
+    url = 'php/procedimientos.php?fun=' + url + "&usuario="+document.getElementById('idusu').value
+                 +"&pass="+document.getElementById('contraUsu').value
+                 +"&bd="+document.getElementById('CmbBD').value
+				 +"&usuario="+document.getElementById('idusu').value
+                 +"&ip="+document.getElementById('ip').value
+                 +"&puerto="+document.getElementById('puerto').value;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = cambioEstado;
     xhttp.open('GET',url,true);
