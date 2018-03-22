@@ -61,7 +61,7 @@ function NewFileGroups($bd,$fgn){
 	if( sqlsrv_execute( $stmt ) === false ) {
           die( print_r( sqlsrv_errors(), true));
     }
-	echo "ACM1PT";
+	echo "Filegroup Creado correctamente! Yay!";
 
 }	
 
@@ -72,10 +72,13 @@ function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
 	global $conn, $cmamo;
 	/*'test','ACM1PT2','C:\Users\Steven\Desktop\TEC\Semestre 5\Bases II',5, 
 								20, 5, 'Soy_un_manco_en_Dota'*/
-	$SQL = "DiscosPlusPlus ('$bd','$fn','$ruta','$size', 
-								'$max', '$grogro', '$filegroup')";
+	$SQL = "exec DiscosPlusPlus ?,?,?,?,?,?,?";
 		// Execute query:
-		$resultado = sqlsrv_query($conn,$SQL) 
-			or die('A error occured: ' . mysql_error());
-		
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$ruta,&$size, 
+								&$max, &$grogro, &$filegroup));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	echo "Nuevo disco creado correctamente...";
 }

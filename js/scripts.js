@@ -6,8 +6,9 @@ var g_puerto = "";
 var conn = "on";
 
 function logData(bd, usu, pass, ip, puerto){
-    if(bd != null){ 
+    if(bd != null){
         g_bd = bd;
+		console.log(bd);
     }
     if(usu != null){ 
         g_usu = usu;
