@@ -5,6 +5,18 @@ margin: top left bottom right;
 body {
     background-color: lightblue;
 }
+/*
+body:after {
+    display: block;
+    position: fixed; // could also be absolute 
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+}
+*/
 
 div.Principal {
 	float: top;
@@ -19,14 +31,17 @@ div.Encabezado {
 }
 
 div.Login {
-	background-color: #D7DBDD; 
-	
-	border-style: solid;
-	border-width: 2px;
-	border-radius: 5px;
-	
-	margin-left: 35%;
-	margin-right: 35%;
+    line-height: 50px;
+    padding: 1%;
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -225px;
+    background-color: #f1c40f;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 11; /* 1px higher than the overlay layer */
 }
 
 div.Opciones {
@@ -61,6 +76,10 @@ li {
     float: left;
 }
 
+ul li ol a {
+	display: none;
+}
+
 li a {
     display: block;
     color: white;
@@ -69,6 +88,6 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+li a:hover{
     background-color: #111111;
 }

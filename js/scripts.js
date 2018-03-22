@@ -1,8 +1,9 @@
-var g_bd;
-var g_usu;
-var g_pass;
-var g_ip;
-var g_puerto;
+var g_bd = "";
+var g_usu = "";
+var g_pass = "";
+var g_ip = "";
+var g_puerto = "";
+var conn = "on";
 
 function logData(bd, usu, pass, ip, puerto){
     g_bd = bd;
@@ -10,6 +11,15 @@ function logData(bd, usu, pass, ip, puerto){
     g_pass = pass;
     g_ip = ip;
     g_puerto = puerto;
+}
+
+function logDisapper(v_div){
+    if(conn == "on"){
+        document.getElementById(v_div).style.display = "none";
+        document.getElementById(v_div).pseudoStyle("after","display","none");
+    }else{
+        document.getElementById(v_div).style.display = "block";
+    }
 }
 
 function defaultPag(){

@@ -11,6 +11,9 @@ function getAjax(url,tipo,parametros,idNotificacion)
     {
         if(this.readyState == 4 && this.status == 200)                                 
         {
+            if(this.responseText != ""){
+                conn = "on";
+            }
             document.getElementById(idNotificacion).innerHTML = this.responseText;
         }
     };
@@ -20,12 +23,11 @@ function getAjax(url,tipo,parametros,idNotificacion)
 
 function cmbAjax(url,parametros, cambioEstado)
 {
-    url = 'php/procedimientos.php?fun=' + url + "&usuario="+document.getElementById('idusu').value
-                 +"&pass="+document.getElementById('contraUsu').value
-                 +"&bd="+document.getElementById('CmbBD').value
-				 +"&usuario="+document.getElementById('idusu').value
-                 +"&ip="+document.getElementById('ip').value
-                 +"&puerto="+document.getElementById('puerto').value;
+    url = 'php/procedimientos.php?fun=' + url + "&usuario="+g_usu
+                 +"&pass="+g_pass
+                 +"&bd="+g_bd
+                 +"&ip="+g_ip
+                 +"&puerto="+g_puerto;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = cambioEstado;
     xhttp.open('GET',url,true);
