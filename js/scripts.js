@@ -22,12 +22,12 @@ function logData(bd, usu, pass, ip, puerto){
     if(puerto != null){ 
         g_puerto = puerto;
     }
+    document.getElementById('cabeza').innerHTML = "Usuario: " + g_usu + " IP: " + g_ip + g_puerto + " Base de Datos: " + g_bd;
 }
 
 function logDisapper(v_div){
     if(conn == "on"){
         document.getElementById(v_div).style.display = "none";
-        //document.getElementById(v_div).pseudoStyle("after","display","none");
     }else{
         document.getElementById(v_div).style.display = "block";
     }
@@ -89,27 +89,6 @@ function cmbFG(cmbname){
 	cmbAjax(cmbname,null, cambioEstado);
 }
 
-function appearDiv(check) {
-    var ch = document.getElementById(check);
-    if(ch.checked){
-    	document.getElementById(ch.value).style.display = "block";
-    }else{
-    	document.getElementById(ch.value).style.display = "none";
-    }
-}
-
-function camBtn(check, texto){
-	var ch = document.getElementById(check);
-	var btns = document.getElementsByName('btn');
-	if(ch.checked && texto != "Consultas"){
-		for (var i = 0; i < btns.length; i++) {
-			btns[i].innerHTML = texto;
-		}
-        trans = texto;
-	}	
-}
-
-
 function grafic() {
         chart = new CanvasJS.Chart("grafic", {
             animationEnabled: true,
@@ -139,4 +118,25 @@ function update(){
     var x = setInterval(function() {
         grafic();
     }, 12000);
+}
+
+
+function appearDiv(check) {
+    var ch = document.getElementById(check);
+    if(ch.checked){
+        document.getElementById(ch.value).style.display = "block";
+    }else{
+        document.getElementById(ch.value).style.display = "none";
+    }
+}
+
+function camBtn(check, texto){
+    var ch = document.getElementById(check);
+    var btns = document.getElementsByName('btn');
+    if(ch.checked && texto != "Consultas"){
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].innerHTML = texto;
+        }
+        trans = texto;
+    }   
 }
