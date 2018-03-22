@@ -15,7 +15,7 @@ if( isset($_GET['bd']) && !empty($_GET['bd'])
     ){
 		print_r('hola3');
     	$db = conexion($_GET['bd'],$_GET['usuario'],$_GET['pass'],$_GET['ip'],$_GET['puerto']);
-    	echo "C mamo";
+    	echo "";
     }else{
     	echo "Introduzca un usuario y contraseña";
     }
