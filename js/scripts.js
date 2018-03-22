@@ -3,14 +3,24 @@ var g_usu = "";
 var g_pass = "";
 var g_ip = "";
 var g_puerto = "";
-var conn = "on";
+var conn = "";
 
 function logData(bd, usu, pass, ip, puerto){
-    g_bd = bd;
-    g_usu = usu;
-    g_pass = pass;
-    g_ip = ip;
-    g_puerto = puerto;
+    if(bd != null){ 
+        g_bd = bd;
+    }
+    if(usu != null){ 
+        g_usu = usu;
+    }
+    if(pass != null){ 
+        g_pass = pass;
+    }
+    if(ip != null){ 
+        g_ip = ip;
+    }
+    if(puerto != null){ 
+        g_puerto = puerto;
+    }
 }
 
 function logDisapper(v_div){

@@ -47,13 +47,13 @@
 											getAjax('ip='+document.getElementById('ip').value
 												   +'&puerto='+document.getElementById('puerto').value,
 						        					'GET',null,'notificarC');
-											
+
 						        			logDisapper('Logeo')">
 				Conectar</button>
 			</div>
 
 		<div id="seleccionBD" class="seleBD">
-			<select id="CmbBD" onclick="cmbBases('CmbBD')">
+			<select id="CmbBD" onclick="cmbBases('CmbBD')" onchange="logData(document.getElementById('CmbBD').value, null, null, null, null)">
 				<option value="master">master</option>
 			</select>
 		</div>

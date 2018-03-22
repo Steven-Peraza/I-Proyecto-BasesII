@@ -80,7 +80,7 @@ ul li ol a {
 	display: none;
 }
 
-li a {
+li a:hover a {
     display: block;
     color: white;
     text-align: center;
