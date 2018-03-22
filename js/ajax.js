@@ -10,9 +10,7 @@ function getAjax(url,tipo,parametros,idNotificacion)
     {
         if(this.readyState == 4 && this.status == 200)                                 
         {
-            if(this.responseText != ""){
-                conn = "on";
-            }
+            
             document.getElementById(idNotificacion).innerHTML = this.responseText;
         }
     };

@@ -3,7 +3,7 @@ var g_usu = "";
 var g_pass = "";
 var g_ip = "";
 var g_puerto = "";
-var conn = "";
+var conn = "on";
 
 function logData(bd, usu, pass, ip, puerto){
     if(bd != null){ 
