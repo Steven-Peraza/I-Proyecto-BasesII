@@ -4,7 +4,9 @@ margin: top left bottom right;
 */
 body {
     background-color: lightblue;
+    float: top;
 }
+
 /*
 body:after {
     display: block;
@@ -26,8 +28,24 @@ div.Principal {
 }
 
 div.Encabezado {
-	background-color: #F7DC6F;
-	padding: 2%;
+	background-color: #660033;
+	float: top;
+	padding: 30px 0 0 30px;
+}
+
+.Encabezado p {
+	background-color: #b30059; 
+	padding: 10px;
+	margin: 0;
+
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 25px;
+	letter-spacing: -1px;
+	word-spacing: -3px;
+	color: #ffffff;
+	font-weight: 700;
+	font-style: italic;
+	font-variant: normal;
 }
 
 div.Login {
@@ -44,17 +62,10 @@ div.Login {
     z-index: 11; /* 1px higher than the overlay layer */
 }
 
-div.Opciones {
-	float: left;	
-	width: 60%;
-
-}
-
 div.Graficos {
 	background-color: #58D68D;
 	overflow: auto;
 	float: right;
-	
 	height: 100%; 
 	width: 40%;
 }
@@ -93,28 +104,32 @@ li a:hover{
 }
 */
 
-a {
-    color: #;
+div.main_nav {
+	background: #333333;
+	float: left;	
+	width: 60%;
+	padding-top: 5px;
 }
 
 .main_nav ul {
     background: #333333;
     float: left;
-    -webkit-transition: .5s;
     transition: .5s;
-    height: 60%;
+    width:60%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 .main_nav li {
     float: left;
     position: relative;
-    width: 150px;
+    width: 33.33%;
     list-style: none;
-    -webkit-transition: .5s;
     transition: .5s;
 }
 
-.main_nav > ul > li > a, h1 {
+.main_nav > ul > li > a {
     text-transform: uppercase;
 }
 
@@ -122,7 +137,7 @@ a {
     display: block;
     text-decoration: none;
     padding: 5px 15px;
-    color: #000;
+    color: #fff;
 }
 
 .main_nav ul ul {

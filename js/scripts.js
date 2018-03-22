@@ -21,7 +21,7 @@ function logData(bd, usu, pass, ip, puerto){
     if(puerto != null){ 
         g_puerto = puerto;
     }
-    document.getElementById('cabeza').innerHTML = "Usuario: " + g_usu + " IP: " + g_ip + g_puerto + " Base de Datos: " + g_bd;
+    document.getElementById('cabeza').innerHTML = "Usuario: " + g_usu + " IP: " + ":" + g_ip + g_puerto + " Base de Datos: " + g_bd;
 }
 
 function logDisapper(v_div){
