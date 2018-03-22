@@ -11,10 +11,11 @@ function camCheck(cb1, cb2, cb3)
 }
 
 function defaultPag(){
-	document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
+	//document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
 	cmbBases('CmbBD');
     grafic();
     update();
+	getAjax('','GET',null,'notificarC');
 }
 
 function cmbBases(cmbname){
@@ -39,7 +40,7 @@ function cmbBases(cmbname){
             }
         }
     };
-	cmbAjax('cmbBD',null, cambioEstado);
+	cmbAjax('CmbBD',null, cambioEstado);
 }
 
 function appearDiv(check) {

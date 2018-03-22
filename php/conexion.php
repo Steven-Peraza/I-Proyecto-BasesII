@@ -1,22 +1,29 @@
 <?php
 
 
-function predeterminadaConexion(){
-    $db = mysql_connect('localhost', 'sa', 'kezito123A')
-        or die('No se pudo conectar: ' . mysql_error());
+function predeterminadaConexion($bd,$usuario,$pass){
+	//phpinfo();
+    $serverName = "localhost"; 
+	$uid = "sa";   
+	$pwd = "Nanaki8448";  
+	$databaseName = "master"; 
+
+	$connectionInfo = array( "UID"=>$uid,                            
+							 "PWD"=>$pwd,                            
+							 "Database"=>$databaseName); 
+
+	/* Connect using SQL Server Authentication. */  
+	$conn = sqlsrv_connect( $serverName, $connectionInfo);  
+
+//        or die('No se pudo conectar: ' . mysql_error());
     
-        echo 'Connected successfully';
+	if ($conn) {
+		echo 'Connected successfully';
+}
         
-        mysql_select_db('master', $db) or die('No se pudo seleccionar la base de datos');
+        
+    if (!$conn) {
+			die('Algo fue mal mientras se conectaba a MSSQL');
 }
-
-function petidicionConectar($bd, $usuario, $pass)
-{
-    $db = mysql_connect('localhost', '$usuario', '$pass')
-    or die('No se pudo conectar: ' . mysql_error());
-
-    echo 'Connected successfully';
-    
-    mysql_select_db('$bd') or die('No se pudo seleccionar la base de datos');
+return $conn;
 }
-?>
