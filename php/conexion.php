@@ -1,12 +1,12 @@
 <?php
 
 
-function predeterminadaConexion($bd,$usuario,$pass){
+function conexion($bd,$usuario,$pass,$ip,$puerto){
 	//phpinfo();
-    $serverName = "localhost"; 
-	$uid = "sa";   
-	$pwd = "Nanaki8448";  
-	$databaseName = "master"; 
+    $serverName = "$ip"; 
+	$uid = "$usuario";   
+	$pwd = "$pass";  
+	$databaseName = "$bd"; 
 
 	$connectionInfo = array( "UID"=>$uid,                            
 							 "PWD"=>$pwd,                            
@@ -19,11 +19,10 @@ function predeterminadaConexion($bd,$usuario,$pass){
     
 	if ($conn) {
 		echo 'Connected successfully';
-}
-        
-        
-    if (!$conn) {
+	}
+
+	else {
 			die('Algo fue mal mientras se conectaba a MSSQL');
-}
-return $conn;
+	}
+	return $conn;
 }

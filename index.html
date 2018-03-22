@@ -32,13 +32,14 @@
 						</tr>
 						<tr>
 							<td>IP Server:</td>
-							<td><input type="text" id="it_hurts_when_IP"></td>
+							<td><input type="text" id="ip"></td>
 							<td>Puerto:</td>
-							<td><input type="text" id="olivineCity"></td>
+							<td><input type="text" id="puerto"></td>
 						</tr>
 					</tbody>
 				</table>
-				<button name="btn" onclick="getAjax('bd='+document.getElementById('CmbBD').options[document.getElementById('CmbBD').selectedIndex].value,
+				<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+												 	'&puerto='+document.getElementById('puerto').value,
 						        					'GET',null,'notificar')">
 				Conectar</button>
 			</div>
@@ -83,7 +84,10 @@
 					    	</td>
 					    </tr>
 					    <tr>
-							<td><select id="CmbBD" onclick="cmbBases('CmbBD')"></select></td>
+							<td><select id="CmbBD" onclick="cmbBases('CmbBD')">
+									<option value="master">master</option>
+								</select>
+							</td>
 						</tr>
 						<input type="checkBox" id="Discos" onclick="appearDiv('Discos')" value="Esqueleto">Discos
 					</tbody>

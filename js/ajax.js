@@ -1,6 +1,5 @@
 function getAjax(url,tipo,parametros,idNotificacion)
 {
-	console.log('holanda?');
     borrarNotificaciones(idNotificacion);
     var usuario = "&usuario="+document.getElementById('idusu').value
                  +"&pass="+document.getElementById('contraUsu').value
@@ -21,7 +20,8 @@ function getAjax(url,tipo,parametros,idNotificacion)
 
 function cmbAjax(url,parametros, cambioEstado)
 {
-    url = 'php/procedimientos.php?fun=' + url;
+    url = 'php/procedimientos.php?fun=' + url + "&usuario="+document.getElementById('idusu').value
+                 +"&pass="+document.getElementById('contraUsu').value;
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = cambioEstado;
     xhttp.open('GET',url,true);
