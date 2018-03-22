@@ -25,12 +25,13 @@ function cmbBases(cmbname){
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
-            obj_marcas=this.responseText;
+			document.getElementById('notificarC').innerHTML = this.responseText;
+            obj_marcas=this.responseText.split(",");
             for (var i in obj_marcas)
             {
                 var nodoOption = document.createElement("option");
-                var textnode = document.createTextNode(obj_marcas[i].nombremarca);
-                nodoOption.value = obj_marcas[i].idmarca;
+                var textnode = document.createTextNode(obj_marcas[i]);
+                nodoOption.value = obj_marcas[i];
                 nodoOption.appendChild(textnode);
                 nodoSelect.appendChild(nodoOption);
             }

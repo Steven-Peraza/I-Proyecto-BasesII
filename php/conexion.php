@@ -1,9 +1,7 @@
 <?php
 
-echo "hola??";
 function conexion($bd,$usuario,$pass,$ip,$puerto){
 	//phpinfo();
-	echo "puta...";
     $serverName = "$ip"; 
 	$uid = "$usuario";   
 	$pwd = "$pass";  
