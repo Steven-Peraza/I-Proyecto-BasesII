@@ -78,18 +78,19 @@
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GA" onclick="appearDiv('FGS')">Grupos de archivos</a></li>
-			      	<li><a href="#G" onclick="appearDiv('grafic')">Graficos</a></li>
+			      	<li><a href="#G" onclick="appearDiv('grafic'); grafic(); update();">Graficos</a></li>
 		    	</ul>
-			</div>
-
-
-			<div id="espaciado">
-				
 			</div>
 
 			<div class="Graficos">
 				<div name="divCam" id="grafic"></div>
+				<div class="consultitas">
+				<h1>Consola</h1>
+				<p id="notificarC"></p>
 			</div>
+			</div>
+
+			<div class="espaciado"></div>
 
 			<div name="divCam" id="FGS">
 				<h3>Crear Grupo de Archivos</h1>
@@ -99,12 +100,16 @@
 					        <td>Nombre del FG:</td>
 					        <td><input type="TEXT" id="fgname"></td>
 					    </tr>
-						<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+						<tr>
+							<td>
+								<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
 												   +'&puerto='+document.getElementById('puerto').value
 												   +'&fgname='+document.getElementById('fgname').value
 												   +'&fun=FGDB',
 						        					'GET',null,'notificarfg')">
-						Crear FG</button>
+								Crear FG</button>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 				<p id="notificarfg"></p>
@@ -144,7 +149,8 @@
 					        <td><input type="text" id="path"></td>
 					    </tr>
 						<tr>
-							<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+							<td>
+								<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
 													   +'&puerto='+document.getElementById('puerto').value
 													   +'&fgname='+document.getElementById('CmbFGS').value
 													   +'&fname='+document.getElementById('NomArchivo').value
@@ -154,7 +160,9 @@
 													   +'&path='+document.getElementById('path').value
 													   +'&fun=NFDB',
 														'GET',null,'notificarC')">
-							Crear FG</button>
+								Crear FG</button>
+							</td>
+							
 						</tr>
 				    </tbody>
 			    </table>
@@ -206,11 +214,6 @@
 				    </tbody>
 			    </table>
 			</div>
-
-			<div id="consultitas" style="background-color: purple;float: left; width: 30%">
-				<p id="notificarC"></p>
-			</div>
-		
 		</div>
 	</body>
 </html>
