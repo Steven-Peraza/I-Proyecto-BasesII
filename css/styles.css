@@ -153,12 +153,12 @@ ul {
 	top: 0;
 }
 
-#main_nav li:hover li {
-	background: #333;
+#main_nav li:hover li, #main_nav li:hover {
+	background: #111;
 }
 
-#main_nav li li:hover, #main_nav li li:hover li, #main_nav li:hover {
-	background: #111;
+#main_nav li li:hover, #main_nav li li:hover li {
+	background: #555;
 }
 
 #main_nav li li li:hover {
