@@ -52,30 +52,28 @@
 				Conectar</button>
 			</div>
 
-		<div id="seleccionBD" class="seleBD">
-			<select id="CmbBD" onclick="cmbBases('CmbBD')" onchange="logData(document.getElementById('CmbBD').value, null, null, null, null)">
-				<option value="master">master</option>
-			</select>
-		</div>
-
 		<div class="Principal">
 
 			<div class="Encabezado"> 
+				<div style="float: right;">
+					<select id="CmbBD" onclick="cmbBases('CmbBD')" onchange="logData(document.getElementById('CmbBD').value, null, null, null, null)">
+						<option value="master">master</option>
+					</select>
+				</div>
 				<p id="cabeza">Usuario: IP:: Base de Datos:</p>
 			</div>
 
-			<div class="main_nav">
+			<div id="main_nav">
 				<ul>
 			      	<li><a href="#Discos">Discos</a> 
 			      		<ul>
 			      			<li><a href="#crearDisco">Crear</a></li>
 			      			<li><a href="#modificarDisco">Modificar</a></li>
-			      			<li><a href="#eliminarDisco">Eliminar(En proceso)</a></li>
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GruposArchivos">Grupos de archivos</a> 
 			      		<ul>
-			      			<li><a href="#Crear">crear</a></li>
+			      			<li><a href="#Crear">Crear</a></li>
 			      		</ul>
 			      	</li>
 			      	<li><a href="#Graficos">Graficos</a></li>
