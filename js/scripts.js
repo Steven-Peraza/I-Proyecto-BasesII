@@ -56,16 +56,40 @@ function grafic(gfname, tamMax, tamUso, tamDis, grogro) {
         chart = new CanvasJS.Chart("grafic", {
             animationEnabled: true,
             title:{
-                text: "Graficos del Archivo" + fgname + "MB",
+                text: "Graficos del Archivo" + gfname + "MB",
                 horizontalAlign: "center"
-            },
+            },/*
             subtitles:[{
                 text1: "Tamaño máximo: " + tamMax + "MB \n"
                       +"Espacio usado: " + tamUso + "MB \n"
                       +"Espacio disponible: " + tamDis + "MB \n"
                       +"Crecimiento: " + grogro + "MB",
                 horizontalAlign: "left",
-            }],
+            }],*/
+			 subtitles:[
+				{ //OJO
+					text: "Tamaño Actual: "+ tamUso + "MB",
+					horizontalAlign: "left"
+				//Uncomment properties below to see how they behave
+				//fontColor: "red",
+				//fontSize: 30
+				},
+				 
+				{
+					text: "Tamaño Maximo: "+ tamMax + "MB",
+					horizontalAlign: "left"
+					//Uncomment properties below to see how they behave
+					//fontColor: "red",
+					//fontSize: 30
+				},
+				{
+					text: "Crecimiento: "+ grogro + "MB",
+					horizontalAlign: "left"
+					//Uncomment properties below to see how they behave
+					//fontColor: "red",
+					//fontSize: 30
+				}
+				],
             data: [{
                 type: "doughnut",
                 startAngle: 60,
@@ -76,8 +100,8 @@ function grafic(gfname, tamMax, tamUso, tamDis, grogro) {
                 indexLabel: "{label} - #percent%",
                 toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                 dataPoints: [
-                    { y: tamUso, label: "Espacio Usado" },
-                    { y: tamDis, label: "Espacio Disponible" }
+                    { y: parseInt(tamUso), label: "Espacio Usado" },
+                    { y: parseInt(tamDis), label: "Espacio Disponible" }
                 ]
             }]
         });

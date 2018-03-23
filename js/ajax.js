@@ -6,7 +6,6 @@ function getAjax(url,tipo,parametros,idNotificacion)
                  +"&pass="+document.getElementById('contraUsu').value
                  +"&bd="+document.getElementById('CmbBD').value;
     url = 'php/procedimientos.php?' + url + usuario;
-	console.log(url);
     logMsj();
 
     var xhttp = new XMLHttpRequest();
@@ -20,7 +19,6 @@ function getAjax(url,tipo,parametros,idNotificacion)
     };
     xhttp.open(tipo, url,true);
     xhttp.send(parametros);
-	console.log("gg ajax");
 }
 
 function cmbAjax(url,parametros, cambioEstado)

@@ -28,6 +28,10 @@ else if(($_GET['fun'] == 'CmbFGS') || ($_GET['fun'] == 'CmbFGSM')){
         $cmamo2 = FGselection();
 		echo $cmamo2;
     }
+else if($_GET['fun'] == 'CmbFNS'){
+        $cmamo2 = FNselection();
+		echo $cmamo2;
+    }
 	//llamada al procedimiento almacenado de creacion de filegroups...
 	else if(($_GET['fun'] == 'FGDB') &&( isset($_GET['fgname']) && !empty($_GET['fgname']))){
         NewFileGroups($_GET['bd'],$_GET['fgname']);
@@ -74,6 +78,26 @@ function DBselection(){
 function FGselection(){
 	global $conn, $cmamo;
 	$SQL = "SELECT name from sys.filegroups";
+	// Execute query:
+		$resultado = sqlsrv_query($conn,$SQL) 
+			or die('A error occured: ' . mysql_error());
+		
+		//$row = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
+        do {
+		   while ($row = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['name'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+		
+		//print_r ($cmamo);
+		return $cmamo;
+}
+
+//funcion que selecciona los files a utilizar...
+function FNselection(){
+	global $conn, $cmamo;
+	$SQL = "select name from sys.database_files";
 	// Execute query:
 		$resultado = sqlsrv_query($conn,$SQL) 
 			or die('A error occured: ' . mysql_error());
@@ -182,3 +206,76 @@ function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
 	}
 	
 }
+
+function K/D/A ($fileName){
+	
+	global $conn,$cmamo;
+
+	$SQL = "exec CaracSize ?";
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	do {
+		   while ($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['Total de MB'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+	
+	$SQL = "exec CaracGrowth ?";
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	do {
+		   while ($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['Growth'];
+		   }
+		} while (sqlsrv_next_result($resultado));	
+	$SQL = "exec CaracMax ?";
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	do {
+		   while ($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['MB Max'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+		
+		
+	$SQL = "exec CaracSize ?";
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	do {
+		   while ($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['Total de MB desocupados'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+		
+		
+	$SQL = "exec CaracUsa ?";
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	do {
+		   while ($row = sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['Total de MB ocupados'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+	
+	return $cmamo;
+	}
