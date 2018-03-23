@@ -25,7 +25,7 @@ if(isset($_GET['fun'])){
 		echo $cmamo2;
     }
 	else if($_GET['fun'] == 'CmbFGS'){
-        $cmamo2 = FGselection($_GET['bd']);
+        $cmamo2 = FGselection();
 		echo $cmamo2;
     }
 	//llamada al procedimiento almacenado de creacion de filegroups...
@@ -34,14 +34,14 @@ if(isset($_GET['fun'])){
     }
 	//llamada al procedimiento almacenado de creacion de discos extra de archivos...
 	else if(($_GET['fun'] == 'NFDB')&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
-									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
-									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
-									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
-									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
-									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
-									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fname']) && !empty($_GET['fname'])
+									&&( isset($_GET['size']) && !empty($_GET['size'])
+									&&( isset($_GET['max']) && !empty($_GET['max'])
+									&&( isset($_GET['grogro']) && !empty($_GET['grogro'])
+									&&( isset($_GET['bd']) && !empty($_GET['bd'])
+									&&( isset($_GET['path']) && !empty($_GET['path'])
 	)))))))){
-        NewFiles($_GET['bd'],$_GET['fgname']/*,,//,//,//,//])*/);
+        NewFiles($_GET['bd'],$_GET['fname'],$_GET['path'],$_GET['size'],$_GET['max'],$_GET['grogro'],$_GET['fgname']);
     }
 	else if(($_GET['fun'] == 'MFDB') &&(( isset($_GET['fn']) && !empty($_GET['fn'])
 									&&( isset($_GET['bd']) && !empty($_GET['bd']))))){
@@ -70,13 +70,11 @@ function DBselection(){
 }
 
 //funcion que selecciona los fgs a utilizar...
-function FGselection($bd){
+function FGselection(){
 	global $conn, $cmamo;
-	$SQL = "use ?
-			SELECT name from sys.filegroups";
-	$params = array(&$bd);
+	$SQL = "SELECT name from sys.filegroups";
 	// Execute query:
-		$resultado = sqlsrv_query($conn,$SQL,$params) 
+		$resultado = sqlsrv_query($conn,$SQL) 
 			or die('A error occured: ' . mysql_error());
 		
 		//$row = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
@@ -115,7 +113,7 @@ function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
 	$SQL = "exec DiscosPlusPlus ?,?,?,?,?,?,?";
 		// Execute query:
 	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$ruta,&$size, 
-								&$max, &$grogro, &$filegroup));
+								&$max, &$grogro, &$fg));
 		// Execute query:
 	if( sqlsrv_execute( $stmt ) === false ) {
           die( print_r( sqlsrv_errors(), true));

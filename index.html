@@ -58,6 +58,12 @@
 					<select id="CmbBD" onchange="cmbBases('CmbFGS')">
 						<option value="master">master</option>
 					</select>
+					<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+												   +'&puerto='+document.getElementById('puerto').value,
+						        					'GET',null,'notificarC');
+						        			cmbBases('CmbFGS')
+						        			">
+					Conectar</button>
 				</div>
 				<p id="cabeza">Usuario: IP:: Base de Datos:</p>
 			</div>
@@ -98,35 +104,53 @@
 			</div>
 
 			<div name="divCam" id="CrearArchivos">
-				<tr>
-			        <td>Nombre del archivo:</td>
-			        <td><input type="TEXT" id="NomArchivo"></td>
-			    </tr>
-			    <tr>
-			        <td>Tamaño del archivo:</td>
-			        <td><input type="TEXT" id="TamArchivo"></td>
-			    </tr>
-			    <tr>
-			        <td>Tamaño maximo del archivo:</td>
-			        <td><input type="TEXT" id="TamMaxArchivo"></td>
-			    </tr>
-			    <tr>
-			        <td>Crecimiento del archivo:</td>
-			        <td><input type="TEXT" id="CrecArchivo"></td>
-			    </tr>
-			    <tr>
-					<td><select id="CmbFGS" onclick="cmbBases('CmbFGS')">
-						</select>
-					</td>
-				</tr>
-			    <tr>
-			        <td>Buscar direccion de guardado:</td>
-			        <td><input type="TEXT" id="fgname"></td>
-			    </tr>
+				<table width="360" border="0">
+					<tbody>
+						<tr>
+					        <td>Nombre del archivo:</td>
+					        <td><input type="TEXT" id="NomArchivo"></td>
+					    </tr>
+					    <tr>
+					        <td>Tamaño del archivo:</td>
+					        <td><input type="TEXT" id="TamArchivo"></td>
+					    </tr>
+					    <tr>
+					        <td>Tamaño maximo del archivo:</td>
+					        <td><input type="TEXT" id="TamMaxArchivo"></td>
+					    </tr>
+					    <tr>
+					        <td>Crecimiento del archivo:</td>
+					        <td><input type="TEXT" id="CreciArchivo"></td>
+					    </tr>
+					    <tr>
+					    	<td>Grupo de archivo:</td>
+							<td><select id="CmbFGS" onchange="cmbFiles('CmbFGS')">
+								</select>
+							</td>
+						</tr>
+					    <tr>
+					        <td>Buscar direccion de guardado:</td>
+					        <td><input type="text" id="path"></td>
+					    </tr>
+						<tr>
+							<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+													   +'&puerto='+document.getElementById('puerto').value
+													   +'&fgname='+document.getElementById('CmbFGS').value
+													   +'&fname='+document.getElementById('NomArchivo').value
+													   +'&size='+document.getElementById('TamArchivo').value
+													   +'&max='+document.getElementById('TamMaxArchivo').value
+													   +'&grogro='+document.getElementById('CreciArchivo').value
+													   +'&path='+document.getElementById('path').value
+													   +'&fun=NFDB',
+														'GET',null,'notificarC')">
+							Crear FG</button>
+						</tr>
+				    </tbody>
+			    </table>
 			</div>
 
 			<div id="Esqueleto">
-				<table width="360" border="0">
+				<table >
 				    <tbody><tr>Tabla nombre</tr>
 					    <tr>
 					        <td>dato:</td>

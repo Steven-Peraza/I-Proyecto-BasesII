@@ -3,6 +3,7 @@ function defaultPag(){
     document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
     document.getElementById('CrearArchivos').style.display = "none";
     document.getElementById('FGS').style.display = "none";
+    
 }
 
 //Disaparecer el cuadro de logeo despues de logearse
