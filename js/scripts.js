@@ -60,10 +60,10 @@ function grafic(gfname, tamMax, tamUso, tamDis, grogro) {
                 horizontalAlign: "center"
             },
             subtitles:[{
-                text: "Tamaño máximo: " + tamMax + "MB",
-                text: "Espacio usado: " + tamUso + "MB",
-                text: "Espacio disponible: " + tamDis + "MB",
-                text: "Crecimiento: " + grogro + "MB",
+                text1: "Tamaño máximo: " + tamMax + "MB \n"
+                      +"Espacio usado: " + tamUso + "MB \n"
+                      +"Espacio disponible: " + tamDis + "MB \n"
+                      +"Crecimiento: " + grogro + "MB",
                 horizontalAlign: "left",
             }],
             data: [{

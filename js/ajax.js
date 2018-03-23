@@ -20,6 +20,7 @@ function getAjax(url,tipo,parametros,idNotificacion)
     };
     xhttp.open(tipo, url,true);
     xhttp.send(parametros);
+	console.log("gg ajax");
 }
 
 function cmbAjax(url,parametros, cambioEstado)
