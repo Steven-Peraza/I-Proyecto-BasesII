@@ -71,39 +71,18 @@ div.Graficos {
 }
 
 div.seleBD {
+	float: right;
+	margin: 0;
+	padding: 0;
 	border: solid;
 	background-color: red;
 }
-/*
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333333;
+
+.seleBD input {
+	background: none;
 }
 
-li {
-    float: left;
-}
-
-ul li ol a {
-	display: none;
-}
-
-li a:hover a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-}
-
-li a:hover{
-    background-color: #111111;
-}
-*/
-
+/*Modificacion del navegador*/
 div.main_nav {
 	background: #333333;
 	float: left;	
@@ -111,61 +90,82 @@ div.main_nav {
 	padding-top: 5px;
 }
 
-.main_nav ul {
-    background: #333333;
-    float: left;
-    transition: .5s;
-    width:60%;
+a {
+	color: #06c;
+}
+
+ul {
     padding: 0;
     margin: 0;
-    width: 100%;
 }
 
-.main_nav li {
-    float: left;
-    position: relative;
-    width: 33.33%;
-    list-style: none;
-    transition: .5s;
+#main_nav ul {
+	background: #333333;
+	float: left;
+	-webkit-transition: .5s;
+	transition: .5s;
+	width: 60%;
 }
 
-.main_nav > ul > li > a {
-    text-transform: uppercase;
+#main_nav li {
+	float: left;
+	position: relative;
+	width: 33.33%;
+	list-style: none;
+	-webkit-transition: .5s;
+	transition: .5s;
 }
 
-.main_nav a {
-    display: block;
-    text-decoration: none;
-    padding: 5px 15px;
-    color: #fff;
+#main_nav li ul li{
+	float: left;
+	position: relative;
+	width: 100%;
+	list-style: none;
+	-webkit-transition: .5s;
+	transition: .5s;
 }
 
-.main_nav ul ul {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    visibility: hidden;
-    opacity: 0;
+#main_nav > ul > li > a {
+	text-transform: uppercase;
 }
 
-.main_nav ul ul ul {
-    left: 100%;
-    top: 0;
+#main_nav a {
+	display: block;
+	text-decoration: none;
+	padding: 5px 15px;
+	color: #fff;
 }
 
-.main_nav li:hover, #main_nav li:hover li {
-    background: #ddd;
+#main_nav ul ul {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	visibility: hidden;
+	opacity: 0;
 }
 
-.main_nav li li:hover, #main_nav li li:hover li {
-    background: #bbb;
+#main_nav ul li ul {
+	width: 100%;
 }
 
-.main_nav li li li:hover {
-    background: #999;
+#main_nav ul ul ul {
+	left: 100%;
+	top: 0;
 }
 
-.main_nav li:hover > ul {
-    visibility: visible;
-    opacity: 1;
+#main_nav li:hover li {
+	background: #333;
+}
+
+#main_nav li li:hover, #main_nav li li:hover li, #main_nav li:hover {
+	background: #111;
+}
+
+#main_nav li li li:hover {
+	background: #999;
+}
+
+#main_nav li:hover > ul {
+	visibility: visible;
+	opacity: 1;
 }
