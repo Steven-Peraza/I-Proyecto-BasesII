@@ -90,7 +90,7 @@
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GA" onclick="appearDiv('FGS')">Grupos de archivos</a></li>
-			      	<li><a href="#G" onclick="appearDiv('grafic'); grafic('My Hearth', '30', '20', '10', '5'); update('My Hearth', '30', '20', '10', '5');">Graficos</a></li>
+			      	<li><a href="#G" onclick="appearDiv('grafic')">Graficos</a></li>
 		    	</ul>
 			</div>
 
@@ -104,11 +104,9 @@
 								</select>
 							</td>
 							<td>
-								<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
-															+'&puerto='+document.getElementById('puerto').value
-															+'&CmbArch='+document.getElementById('CmbArch').value
-															+'fun=CmbArch',
-																'GET',null,'notificarC')
+								<button name="btn" onclick="fillGrafic(
+															document.getElementById('CmbArch').value,
+															'GGWP'+'&fname='+document.getElementById('CmbArch').value)
 															">
 								Grafico</button>
 							</td>

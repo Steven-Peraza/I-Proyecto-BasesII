@@ -54,6 +54,10 @@ else if($_GET['fun'] == 'CmbArch'){
 	else if(($_GET['fun'] == 'FGDB') &&( isset($_GET['fgname']) && !empty($_GET['fgname']))){
         NewFileGroups($_GET['bd'],$_GET['fgname']);
     }
+	else if($_GET['fun'] == 'GGWP'){
+        $cmamo2 = KDA($_GET['fname']);
+		echo $cmamo2;
+    }
 }
 
 //funcion que selecciona la db a utilizar...
@@ -224,7 +228,7 @@ function KDA ($fileName){
 			   // Loop through each result set and add to result array
 			   $cmamo = $cmamo . ",". $row['Total de MB'];
 		   }
-		} while (sqlsrv_next_result($resultado));
+		} while (sqlsrv_next_result($stmt));
 	
 	$SQL = "exec CaracGrowth ?";
 	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
@@ -237,7 +241,7 @@ function KDA ($fileName){
 			   // Loop through each result set and add to result array
 			   $cmamo = $cmamo . ",". $row['Growth'];
 		   }
-		} while (sqlsrv_next_result($resultado));	
+		} while (sqlsrv_next_result($stmt));	
 	$SQL = "exec CaracMax ?";
 	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
 		// Execute query:
@@ -249,7 +253,7 @@ function KDA ($fileName){
 			   // Loop through each result set and add to result array
 			   $cmamo = $cmamo . ",". $row['MB Max'];
 		   }
-		} while (sqlsrv_next_result($resultado));
+		} while (sqlsrv_next_result($stmt));
 		
 		
 	$SQL = "exec CaracDisp ?";
@@ -263,7 +267,7 @@ function KDA ($fileName){
 			   // Loop through each result set and add to result array
 			   $cmamo = $cmamo . ",". $row['Total de MB desocupados'];
 		   }
-		} while (sqlsrv_next_result($resultado));
+		} while (sqlsrv_next_result($stmt));
 		
 		
 	$SQL = "exec CaracUsa ?";
@@ -277,7 +281,7 @@ function KDA ($fileName){
 			   // Loop through each result set and add to result array
 			   $cmamo = $cmamo . ",". $row['Total de MB ocupados'];
 		   }
-		} while (sqlsrv_next_result($resultado));
+		} while (sqlsrv_next_result($stmt));
 	
 	return $cmamo;
 	}

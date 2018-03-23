@@ -1,6 +1,5 @@
 function getAjax(url,tipo,parametros,idNotificacion)
 {
-	console.log("quiero dormir... XD");
     borrarNotificaciones(idNotificacion);
     var usuario = "&usuario="+document.getElementById('idusu').value
                  +"&pass="+document.getElementById('contraUsu').value
@@ -20,6 +19,8 @@ function getAjax(url,tipo,parametros,idNotificacion)
     xhttp.open(tipo, url,true);
     xhttp.send(parametros);
 }
+
+
 
 function cmbAjax(url,parametros, cambioEstado)
 {
