@@ -65,10 +65,10 @@
 
 			<div id="main_nav">
 				<ul>
-			      	<li><a href="#Discos">Discos</a> 
+			      	<li><a href="#"">Discos</a> 
 			      		<ul>
-			      			<li><a href="#crearDisco">Crear</a></li>
-			      			<li><a href="#modificarDisco">Modificar</a></li>
+			      			<li><a href="#CD" onclick="appearDiv('CrearArchivos')">Crear</a></li>
+			      			<li><a href="#MD">Modificar</a></li>
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GruposArchivos">Grupos de archivos</a> 
@@ -81,10 +81,10 @@
 			</div>
 
 			<div class="Graficos">
-				<div id="grafic"></div>
+				<div name="divCam" id="grafic"></div>
 			</div>
 
-			<div id="FGS">
+			<div name="divCam" id="FGS">
 				<table width="360" border="0">
 				    <tbody><tr>Tabla FGS</tr>
 					    <tr>
@@ -96,13 +96,13 @@
 												   +'&fgname='+document.getElementById('fgname').value
 												   +'&fun=FGDB',
 						        					'GET',null,'notificarfg')">
-				Crear FG</button>
+						Crear FG</button>
 					</tbody>
 				</table>
 				<p id="notificarfg"></p>
 			</div>
 
-			<div id="CrearArchivos">
+			<div name="divCam" id="CrearArchivos">
 				<tr>
 			        <td>Nombre del archivo:</td>
 			        <td><input type="TEXT" id="NomArchivo"></td>
@@ -120,7 +120,7 @@
 			        <td><input type="TEXT" id="CrecArchivo"></td>
 			    </tr>
 			    <tr>
-					<td><select id="CmbFGS" onclick="cmbBases('CmbFGS')">
+					<td><select id="CmbFGS" onclick="cmbFiles('CmbFGS')">
 						</select>
 					</td>
 				</tr>
