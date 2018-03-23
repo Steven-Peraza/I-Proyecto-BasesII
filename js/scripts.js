@@ -27,17 +27,6 @@ function appearDiv(v_div){
 }
 
 
-function camBtn(check, texto){
-    var ch = document.getElementById(check);
-    var btns = document.getElementsByName('btn');
-    if(ch.checked && texto != "Consultas"){
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].innerHTML = texto;
-        }
-        trans = texto;
-    }   
-}
-
 
 function cmbBases(cmbname){
 	cambioEstado = function ()

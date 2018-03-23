@@ -46,7 +46,7 @@
 
 					        			cmbBases('CmbBD');
 					        			cmbBases('CmbFGS');
-					        			cmbFiles('CmbFGSM')
+					        			cmbBases('CmbFGSM')
 					        			">
 			Conectar</button>
 		</div>
@@ -62,7 +62,7 @@
 												   +'&puerto='+document.getElementById('puerto').value,
 						        					'GET',null,'notificarC');
 						        			cmbBases('CmbFGS');
-						        			cmbFiles('CmbFGSM')
+						        			cmbBases('CmbFGSM')
 						        			">
 					Conectar</button>
 				</div>
@@ -135,7 +135,7 @@
 					    </tr>
 					    <tr>
 					    	<td>Grupo de archivo:</td>
-							<td><select id="CmbFGS" onchange="cmbFiles('CmbFGS')">
+							<td><select id="CmbFGS">
 								</select>
 							</td>
 						</tr>
@@ -185,21 +185,26 @@
 					    </tr>
 					    <tr>
 					    	<td>Grupo de archivo:</td>
-							<td><select id="CmbFGSM" onchange="cmbFiles('CmbFGSM')">
+							<td><select id="CmbFGSM">
 								</select>
 							</td>
 						</tr>
 					    <tr>
-					        <td>Direccion de guardado:</td>
-					        <td><input type="text" id="CfgnameM"></td>
+					        <td>Nuevo Nombre:</td>
+					        <td><input type="TEXT" id="CfgnameM"></td>
 					    </tr>
 					    <tr>
 					    	<td>
 					    		<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
 												   +'&puerto='+document.getElementById('puerto').value
-												   +'&fgname='+document.getElementById('fgname').value
-												   +'&fun=FGDB',
-						        					'GET',null,'notificarfg')">
+												   +'&fgname='+document.getElementById('CmbFGSM').value
+													   +'&fname='+document.getElementById('NomArchivoM').value
+													   +'&nsize='+document.getElementById('TamArchivoM').value
+													   +'&nmax='+document.getElementById('TamMaxArchivoM').value
+													   +'&ngrogro='+document.getElementById('CreciArchivoM').value
+													   +'&nfn='+document.getElementById('CfgnameM').value
+													   +'&fun=MFDB',
+						        					'GET',null,'notificarC')">
 								Modificar Archivo</button>
 					    	</td>
 					    </tr>
