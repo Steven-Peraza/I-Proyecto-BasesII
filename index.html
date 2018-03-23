@@ -38,17 +38,15 @@
 						</tr>
 					</tbody>
 				</table>
-				<button name="btn" onclick="logData(document.getElementById('CmbBD').value,
-						        					document.getElementById('idusu').value,
-						        					document.getElementById('contraUsu').value,
-						        					document.getElementById('ip').value,
-						        					document.getElementById('puerto').value);
-											
-											getAjax('ip='+document.getElementById('ip').value
+				<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
 												   +'&puerto='+document.getElementById('puerto').value,
 						        					'GET',null,'notificarC');
 
-						        			logDisapper('Logeo')">
+						        			logDisapper('Logeo');
+
+						        			cmbBases('CmbBD');
+						        			cmbBases('CmbFGS')
+						        			">
 				Conectar</button>
 			</div>
 
@@ -56,7 +54,7 @@
 
 			<div class="Encabezado"> 
 				<div style="float: right;">
-					<select id="CmbBD" onclick="cmbBases('CmbBD')" onchange="logData(document.getElementById('CmbBD').value, null, null, null, null)">
+					<select id="CmbBD" onchange="">
 						<option value="master">master</option>
 					</select>
 				</div>
@@ -120,7 +118,7 @@
 			        <td><input type="TEXT" id="CrecArchivo"></td>
 			    </tr>
 			    <tr>
-					<td><select id="CmbFGS" onclick="cmbFiles('CmbFGS')">
+					<td><select id="CmbFGS" onchange="cmbFiles('CmbFGS')">
 						</select>
 					</td>
 				</tr>

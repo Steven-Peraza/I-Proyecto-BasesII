@@ -1,35 +1,7 @@
-var g_bd = "";
-var g_usu = "";
-var g_pass = "";
-var g_ip = "";
-var g_puerto = "";
-var conn = "on";
-
 //Datos con los que comienza por defecto el usuario
 function defaultPag(){
     document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
     document.getElementById('CrearArchivos').style.display = "none";
-}
-
-//Guardar los datos de logeo globalmente
-function logData(bd, usu, pass, ip, puerto){
-    if(bd != null){
-        g_bd = bd;
-		console.log(bd);
-    }
-    if(usu != null){ 
-        g_usu = usu;
-    }
-    if(pass != null){ 
-        g_pass = pass;
-    }
-    if(ip != null){ 
-        g_ip = ip;
-    }
-    if(puerto != null){ 
-        g_puerto = puerto;
-    }
-    document.getElementById('cabeza').innerHTML = "Usuario: " + g_usu + " IP: " + ":" + g_ip + g_puerto + " Base de Datos: " + g_bd;
 }
 
 //Disaparecer el cuadro de logeo despues de logearse
