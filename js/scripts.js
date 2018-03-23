@@ -52,13 +52,20 @@ function cmbBases(cmbname){
 	cmbAjax(cmbname,null, cambioEstado);
 }
 
-function grafic() {
+function grafic(gfname, tamMax, tamUso, tamDis, grogro) {
         chart = new CanvasJS.Chart("grafic", {
             animationEnabled: true,
             title:{
-                text: "Espacio del disco",
+                text: "Graficos del Archivo" + fgname + "MB",
                 horizontalAlign: "center"
             },
+            subtitles:[{
+                text: "Tamaño máximo: " + tamMax + "MB",
+                text: "Espacio usado: " + tamUso + "MB",
+                text: "Espacio disponible: " + tamDis + "MB",
+                text: "Crecimiento: " + grogro + "MB",
+                horizontalAlign: "left",
+            }],
             data: [{
                 type: "doughnut",
                 startAngle: 60,
@@ -69,16 +76,16 @@ function grafic() {
                 indexLabel: "{label} - #percent%",
                 toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                 dataPoints: [
-                    { y: 4096, label: "Espacio Usado" },
-                    { y: 1024, label: "Espacio Disponible" }
+                    { y: tamUso, label: "Espacio Usado" },
+                    { y: tamDis, label: "Espacio Disponible" }
                 ]
             }]
         });
         chart.render();
 }
 
-function update(){
+function update(gfname, tamMax, tamUso, tamDis, grogro){
     var x = setInterval(function() {
-        grafic();
+        grafic(gfname, tamMax, tamUso, tamDis, grogro);
     }, 12000);
 }
