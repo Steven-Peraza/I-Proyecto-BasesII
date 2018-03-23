@@ -17,7 +17,7 @@ DECLARE
 end;
 go	
 
-exec FilegroupsPlusPlus 'test','Soy_un_manco_en_Dota'
+--exec FilegroupsPlusPlus 'test','Soy_un_manco_en_Dota'
 go
 
 --procedure elimina filegroups
@@ -56,8 +56,10 @@ CREATE or ALTER PROCEDURE DiscosPlusPlus (@nombreDB nvarchar(50),@fileName nvarc
 END;
 GO
 
+/*
 exec DiscosPlusPlus 'test','ACM1PT2','C:\Users\Steven\Desktop\TEC\Semestre 5\Bases II',5, 
 								20, 5, 'Soy_un_manco_en_Dota'
+								*/
 go
 
 
@@ -121,7 +123,7 @@ CREATE or ALTER PROCEDURE AlterDiscos (@nombreDB nvarchar(50),@fileName nvarchar
 END;
 GO
   
-exec AlterDiscos 'test','El_Peluca_Sapbee',10,20,7,'El_Peluca_Sapbee',5,'7'
+--exec AlterDiscos 'test','El_Peluca_Sapbee',10,20,7,'El_Peluca_Sapbee',5,'7'
 go
 
 --*****************************************************
@@ -156,7 +158,7 @@ end;
 go
 
 --**********************************************************
---Determinarcaracterísticas principales: tamaño, crecimiento, tamaño máximo, porcentaje de uso.
+--Determinarcaracterï¿½sticas principales: tamaï¿½o, crecimiento, tamaï¿½o mï¿½ximo, porcentaje de uso.
 
 create or alter procedure CaracPrin (
 	@fileName nvarchar(50), 
@@ -212,14 +214,16 @@ declare
 -- Execute the procedure specifying a last name for the input parameter  
 -- and saving the output value in the variable @SalesYTDBySalesPerson  
 
-
+/*
 exec CaracPrin 'El_Peluca_Sapbee', @porcenOcu = @porcenOcu2 output, @porcenDes = @porcenDes2 output,
 									@maximus = @maximus2 output, @growth = @growth2 output, @size = @size2 output,
 									@empty = @empty2 output, @full = @full2 output;
+*/
+
 -- Display the value returned by the procedure.   
 
-print @porcenOcu2
+--print @porcenOcu2
 
-print @porcenDes2
+--print @porcenDes2
 go
 

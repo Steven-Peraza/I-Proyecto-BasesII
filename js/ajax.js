@@ -5,6 +5,9 @@ function getAjax(url,tipo,parametros,idNotificacion)
                  +"&pass="+document.getElementById('contraUsu').value
                  +"&bd="+document.getElementById('CmbBD').value;
     url = 'php/procedimientos.php?' + url + usuario;
+
+    logMsj();
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function()
     {
@@ -20,11 +23,12 @@ function getAjax(url,tipo,parametros,idNotificacion)
 
 function cmbAjax(url,parametros, cambioEstado)
 {
-    url = 'php/procedimientos.php?fun=' + url + "&usuario="+g_usu
-                 +"&pass="+g_pass
-                 +"&bd="+g_bd
-                 +"&ip="+g_ip
-                 +"&puerto="+g_puerto;
+    url = 'php/procedimientos.php?fun=' + url + "&usuario="+document.getElementById('idusu').value
+                 +"&pass="+document.getElementById('contraUsu').value
+                 +"&bd="+document.getElementById('CmbBD').value
+                 +"&ip="+document.getElementById('ip').value
+                 +"&puerto="+document.getElementById('puerto').value;
+    logMsj();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = cambioEstado;
     xhttp.open('GET',url,true);
@@ -35,4 +39,11 @@ function cmbAjax(url,parametros, cambioEstado)
 function borrarNotificaciones(idNotificacion)
 {
     document.getElementById(idNotificacion).innerHTML = "";
+}
+
+function logMsj(){
+     document.getElementById('cabeza').innerHTML = "Usuario: "+ document.getElementById('idusu').value 
+                                                 +"IP:"+document.getElementById('ip').value
+                                                 +":"+document.getElementById('puerto').value
+                                                 +" Base de Datos: " + document.getElementById('CmbBD').value;
 }
