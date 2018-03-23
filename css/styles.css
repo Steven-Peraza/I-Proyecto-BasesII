@@ -82,6 +82,10 @@ div.seleBD {
 	background: none;
 }
 
+div.CrearArchivos {
+	display: block;
+}
+
 /*Modificacion del navegador*/
 div.main_nav {
 	background: #333333;

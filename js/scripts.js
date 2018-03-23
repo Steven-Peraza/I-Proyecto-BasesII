@@ -1,7 +1,8 @@
 //Datos con los que comienza por defecto el usuario
 function defaultPag(){
     document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
-    //document.getElementById('CrearArchivos').style.display = "none";
+    document.getElementById('CrearArchivos').style.display = "none";
+    document.getElementById('FGS').style.display = "none";
 }
 
 //Disaparecer el cuadro de logeo despues de logearse
@@ -14,13 +15,13 @@ function logDisapper(v_div){
 }
 
 function appearDiv(v_div){
-    var ch = document.getElementById(v_div);
-    var btns = document.getElementsByName('');
-    if(ch.checked && texto != "Consultas"){
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].innerHTML = texto;
+    var divs = document.getElementsByName('divCam');
+    for (var i = 0; i < divs.length; i++) {
+        if(divs[i].id != v_div){
+             document.getElementById(v_div).style.display = "none";
+        }else{
+            document.getElementById(v_div).style.display = "block";
         }
-        trans = texto;
     }
 }
 
