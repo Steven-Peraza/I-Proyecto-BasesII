@@ -37,7 +37,6 @@ function cmbBases(cmbname){
             var nodoSelect = document.createElement("select");
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
-			//document.getElementById('notificarC').innerHTML = this.responseText;
             obj_marcas=this.responseText.split(",");
             for (var i in obj_marcas)
             {
@@ -52,7 +51,26 @@ function cmbBases(cmbname){
 	cmbAjax(cmbname,null, cambioEstado);
 }
 
-function grafic(gfname, tamAct,tamMax, tamUso, tamDis, grogro) {
+
+function fillGrafic(cmbname){
+	cambioEstado = function ()
+    {
+        if (this.readyState == 4 && this.status == 200)
+        {
+            CmbBDs=document.getElementById(cmbname);
+            nodoPadre_marcas=CmbBDs.parentNode;
+            nodoPadre_marcas.removeChild(CmbBDs);
+            var nodoSelect = document.createElement("select");
+            nodoSelect.id=cmbname;
+            nodoPadre_marcas.appendChild(nodoSelect);
+            obj_marcas=this.responseText.split(",");
+            grafic(cmbname, obj_marcas[0], obj_marcas[2], obj_marcas[4], obj_marcas[3], obj_marcas[1]);
+        }
+    };
+	getAjax(cmbname,null, cambioEstado);
+}
+
+function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
         chart = new CanvasJS.Chart("grafic", {
             animationEnabled: true,
             title:{
