@@ -119,7 +119,7 @@ function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
 	if( sqlsrv_execute( $stmt ) === false ) {
           die( print_r( sqlsrv_errors(), true));
     }
-	echo "Disco modificado correctamente...";
+	echo "Disco creado correctamente...";
 }
 
 function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
@@ -148,7 +148,7 @@ function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
 	}
 	//---------------------------------------------------------
 	else if ($nsize == null && $nmax == null && $ngrogro != null && $nfn == null){
-		$SQL = "exec AlterDiscosGroGro ?,?,?,?,?,?,?";
+		$SQL = "exec AlterDiscosGroGro ?,?,?";
 			// Execute query:
 		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fname,&$ngrogro));
 			// Execute query:
@@ -172,7 +172,7 @@ function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
 	else{
 		$SQL = "exec AlterDiscosAll ?,?,?,?,?,?";
 		// Execute query:
-	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nsize, 
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fname,&$nsize, 
 								&$nmax, &$ngrogro, &$nfn));
 		// Execute query:
 	if( sqlsrv_execute( $stmt ) === false ) {

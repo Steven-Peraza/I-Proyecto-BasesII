@@ -46,7 +46,6 @@
 
 					        			cmbBases('CmbBD');
 					        			cmbBases('CmbFGS');
-					        			cmbBases('CmbFGSM')
 					        			">
 			Conectar</button>
 		</div>
@@ -62,7 +61,6 @@
 												   +'&puerto='+document.getElementById('puerto').value,
 						        					'GET',null,'notificarC');
 						        			cmbBases('CmbFGS');
-						        			cmbBases('CmbFGSM')
 						        			">
 					Conectar</button>
 				</div>
@@ -135,7 +133,7 @@
 					    </tr>
 					    <tr>
 					        <td>Crecimiento del archivo:</td>
-					        <td><input type="TEXT" id="CrecArchivo"></td>
+					        <td><input type="TEXT" id="CreciArchivo"></td>
 					        <td>MB</td>
 					    </tr>
 					    <tr>
@@ -188,15 +186,9 @@
 					    </tr>
 					    <tr>
 					        <td>Crecimiento del archivo:</td>
-					        <td><input type="TEXT" id="CrecArchivoM"></td>
+					        <td><input type="TEXT" id="CreciArchivoM"></td>
 					        <td>MB</td>
 					    </tr>
-					    <tr>
-					    	<td>Grupo de archivo:</td>
-							<td><select id="CmbFGSM">
-								</select>
-							</td>
-						</tr>
 					    <tr>
 					        <td>Nuevo Nombre:</td>
 					        <td><input type="TEXT" id="CfgnameM"></td>
@@ -204,8 +196,7 @@
 					    <tr>
 					    	<td>
 					    		<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
-												   +'&puerto='+document.getElementById('puerto').value
-												   +'&fgname='+document.getElementById('CmbFGSM').value
+												   +'&puerto='+document.getElementById('puerto').value	   
 													   +'&fname='+document.getElementById('NomArchivoM').value
 													   +'&nsize='+document.getElementById('TamArchivoM').value
 													   +'&nmax='+document.getElementById('TamMaxArchivoM').value
