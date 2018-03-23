@@ -26,7 +26,6 @@ function appearDiv(v_div){
     }
 }
 
-
 function cmbBases(cmbname){
 	cambioEstado = function ()
     {

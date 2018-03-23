@@ -24,7 +24,7 @@ if(isset($_GET['fun'])){
         $cmamo2 = DBselection();
 		echo $cmamo2;
     }
-	else if($_GET['fun'] == 'CmbFGS'){
+else if(($_GET['fun'] == 'CmbFGS') || ($_GET['fun'] == 'CmbFGSM')){
         $cmamo2 = FGselection();
 		echo $cmamo2;
     }
@@ -43,10 +43,11 @@ if(isset($_GET['fun'])){
 	)))))))){
         NewFiles($_GET['bd'],$_GET['fname'],$_GET['path'],$_GET['size'],$_GET['max'],$_GET['grogro'],$_GET['fgname']);
     }
-	else if(($_GET['fun'] == 'MFDB') &&(( isset($_GET['fn']) && !empty($_GET['fn'])
-									&&( isset($_GET['bd']) && !empty($_GET['bd']))))){
-		ModiFiles($_GET['bd'],$_GET['fn']/*,//,//,//,//])*/);
-	}
+	else if(($_GET['fun'] == 'MFDB') &&( isset($_GET['fname']) && !empty($_GET['fname'])
+									&&( isset($_GET['bd']) && !empty($_GET['bd'])))){
+		ModiFiles($_GET['bd'],$_GET['fname'],$_GET['nsize'],$_GET['nmax'],$_GET['ngrogro'],$_GET['nfn']);
+		}
+
 }
 
 //funcion que selecciona la db a utilizar...
@@ -121,13 +122,13 @@ function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
 	echo "Disco modificado correctamente...";
 }
 
-function ModiFiles($bd,$fn,$nsize,$nmax,$ngrogro,$nfn){
+function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
 	global $conn;
 	//-----------------------------------------------------------
 	if ($nsize != null && $nmax == null && $ngrogro == null && $nfn == null){
 		$SQL = "exec AlterDiscosSize ?,?,?";
 		// Execute query:
-		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nsize));
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fname,&$nsize));
 			// Execute query:
 		if( sqlsrv_execute( $stmt ) === false ) {
 			  die( print_r( sqlsrv_errors(), true));
@@ -138,7 +139,7 @@ function ModiFiles($bd,$fn,$nsize,$nmax,$ngrogro,$nfn){
 	else if ($nsize == null && $nmax != null && $ngrogro == null && $nfn == null){
 		$SQL = "exec AlterDiscosMax ?,?,?";
 		// Execute query:
-		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nmax));
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fname,&$nmax));
 			// Execute query:
 		if( sqlsrv_execute( $stmt ) === false ) {
 			  die( print_r( sqlsrv_errors(), true));
@@ -149,7 +150,7 @@ function ModiFiles($bd,$fn,$nsize,$nmax,$ngrogro,$nfn){
 	else if ($nsize == null && $nmax == null && $ngrogro != null && $nfn == null){
 		$SQL = "exec AlterDiscosGroGro ?,?,?,?,?,?,?";
 			// Execute query:
-		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$ngrogro));
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fname,&$ngrogro));
 			// Execute query:
 		if( sqlsrv_execute( $stmt ) === false ) {
 			  die( print_r( sqlsrv_errors(), true));
@@ -160,7 +161,7 @@ function ModiFiles($bd,$fn,$nsize,$nmax,$ngrogro,$nfn){
 	else if ($nsize == null && $nmax == null && $ngrogro == null && $nfn != null){
 		$SQL = "exec AlterDiscosName ?,?,?";
 		// Execute query:
-		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nfn));
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fname,&$nfn));
 			// Execute query:
 		if( sqlsrv_execute( $stmt ) === false ) {
 			  die( print_r( sqlsrv_errors(), true));
