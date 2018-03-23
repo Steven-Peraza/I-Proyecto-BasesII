@@ -13,43 +13,43 @@
 	<body onload="defaultPag()">
 
 		<div id="Logeo" class="Login">
-				<table>
-					<tbody><tr>Login</tr>
-						<tr>
-							<td>Usuario:</td>
-							<td><input type="text" id="idusu"></td>
-						</tr>
-						<tr>
-							<td>Contraseña:</td>
-							<td><input type="password" id="contraUsu"></td>
-							<td>Tipo:</td>
-					        <td>
-					        	<select id="tipo">
-					        		<option value="SQL">MySQL</option>
-					        		<option value="Post">Postgres</option>
-					        	</select>
-					    	</td>
-						</tr>
-						<tr>
-							<td>IP Server:</td>
-							<td><input type="text" id="ip"></td>
-							<td>Puerto:</td>
-							<td><input type="text" id="puerto"></td>
-						</tr>
-					</tbody>
-				</table>
-				<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
-												   +'&puerto='+document.getElementById('puerto').value,
-						        					'GET',null,'notificarC');
+			<table>
+				<tbody><tr>Login</tr>
+					<tr>
+						<td>Usuario:</td>
+						<td><input type="text" id="idusu"></td>
+					</tr>
+					<tr>
+						<td>Contraseña:</td>
+						<td><input type="password" id="contraUsu"></td>
+						<td>Tipo:</td>
+				        <td>
+				        	<select id="tipo">
+				        		<option value="SQL">MySQL</option>
+				        		<option value="Post">Postgres</option>
+				        	</select>
+				    	</td>
+					</tr>
+					<tr>
+						<td>IP Server:</td>
+						<td><input type="text" id="ip"></td>
+						<td>Puerto:</td>
+						<td><input type="text" id="puerto"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+											   +'&puerto='+document.getElementById('puerto').value,
+					        					'GET',null,'notificarC');
 
-						        			logDisapper('Logeo');
+					        			logDisapper('Logeo');
 
-						        			cmbBases('CmbBD');
-						        			cmbBases('CmbFGS');
-						        			cmbFiles('CmbFGSM')
-						        			">
-				Conectar</button>
-			</div>
+					        			cmbBases('CmbBD');
+					        			cmbBases('CmbFGS');
+					        			cmbFiles('CmbFGSM')
+					        			">
+			Conectar</button>
+		</div>
 
 		<div class="Principal">
 
@@ -80,6 +80,11 @@
 			      	<li><a href="#GA" onclick="appearDiv('FGS')">Grupos de archivos</a></li>
 			      	<li><a href="#G" onclick="appearDiv('grafic')">Graficos</a></li>
 		    	</ul>
+			</div>
+
+
+			<div id="espaciado">
+				
 			</div>
 
 			<div class="Graficos">
@@ -136,8 +141,21 @@
 						</tr>
 					    <tr>
 					        <td>Buscar direccion de guardado:</td>
-					        <td><input type="text" id="Cfgname"></td>
+					        <td><input type="text" id="path"></td>
 					    </tr>
+						<tr>
+							<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+													   +'&puerto='+document.getElementById('puerto').value
+													   +'&fgname='+document.getElementById('CmbFGS').value
+													   +'&fname='+document.getElementById('NomArchivo').value
+													   +'&size='+document.getElementById('TamArchivo').value
+													   +'&max='+document.getElementById('TamMaxArchivo').value
+													   +'&grogro='+document.getElementById('CreciArchivo').value
+													   +'&path='+document.getElementById('path').value
+													   +'&fun=NFDB',
+														'GET',null,'notificarC')">
+							Crear FG</button>
+						</tr>
 				    </tbody>
 			    </table>
 			</div>
