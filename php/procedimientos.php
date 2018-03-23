@@ -24,10 +24,25 @@ if(isset($_GET['fun'])){
         $cmamo2 = DBselection();
 		echo $cmamo2;
     }
-	//llamada al procedimiento almacenado de creacion de discos extra de archivos...
+	//llamada al procedimiento almacenado de creacion de filegroups...
 	else if(($_GET['fun'] == 'FGDB') &&( isset($_GET['fgname']) && !empty($_GET['fgname']))){
         NewFileGroups($_GET['bd'],$_GET['fgname']);
     }
+	//llamada al procedimiento almacenado de creacion de discos extra de archivos...
+	else if(($_GET['fun'] == 'NFDB')&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
+	)))))))){
+        NewFiles($_GET['bd'],$_GET['fgname'],/*,//,//,//,//])*/);
+    }
+	else if(($_GET['fun'] == 'MFDB') &&(( isset($_GET['fn']) && !empty($_GET['fn'])
+									&&( isset($_GET['bd']) && !empty($_GET['bd'])))){
+		ModiFiles($_GET['bd'],$_GET['fn'],/*,//,//,//])*/);
+	}
 }
 
 //funcion que selecciona la db a utilizar...
@@ -69,7 +84,7 @@ function NewFileGroups($bd,$fgn){
 
 //funcion que crea un nuevo file...
 function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
-	global $conn, $cmamo;
+	global $conn;
 	/*'test','ACM1PT2','C:\Users\Steven\Desktop\TEC\Semestre 5\Bases II',5, 
 								20, 5, 'Soy_un_manco_en_Dota'*/
 	$SQL = "exec DiscosPlusPlus ?,?,?,?,?,?,?";
@@ -80,5 +95,66 @@ function NewFiles($bd,$fn,$ruta,$size,$max,$grogro,$fg){
 	if( sqlsrv_execute( $stmt ) === false ) {
           die( print_r( sqlsrv_errors(), true));
     }
-	echo "Nuevo disco creado correctamente...";
+	echo "Disco modificado correctamente...";
+}
+
+function ModiFiles($bd,$fn,$nsize,$nmax,$ngrogro,$nfn){
+	global $conn;
+	//-----------------------------------------------------------
+	if ($nsize != null && $nmax == null && $ngrogro == null && $nfn == null){
+		$SQL = "exec AlterDiscosSize ?,?,?";
+		// Execute query:
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nsize));
+			// Execute query:
+		if( sqlsrv_execute( $stmt ) === false ) {
+			  die( print_r( sqlsrv_errors(), true));
+		}
+		echo "Disco modificado correctamente...";
+	}
+	//----------------------------------------------------------
+	else if ($nsize == null && $nmax != null && $ngrogro == null && $nfn == null){
+		$SQL = "exec AlterDiscosMax ?,?,?";
+		// Execute query:
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nmax));
+			// Execute query:
+		if( sqlsrv_execute( $stmt ) === false ) {
+			  die( print_r( sqlsrv_errors(), true));
+		}
+		echo "Disco modificado correctamente...";
+	}
+	//---------------------------------------------------------
+	else if ($nsize == null && $nmax == null && $ngrogro != null && $nfn == null){
+		$SQL = "exec AlterDiscosGroGro ?,?,?,?,?,?,?";
+			// Execute query:
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$ngrogro));
+			// Execute query:
+		if( sqlsrv_execute( $stmt ) === false ) {
+			  die( print_r( sqlsrv_errors(), true));
+		}
+		echo "Disco modificado correctamente...";
+	}
+	//---------------------------------------------------------
+	else if ($nsize == null && $nmax == null && $ngrogro == null && $nfn != null){
+		$SQL = "exec AlterDiscosName ?,?,?";
+		// Execute query:
+		$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nfn));
+			// Execute query:
+		if( sqlsrv_execute( $stmt ) === false ) {
+			  die( print_r( sqlsrv_errors(), true));
+		}
+		echo "Disco modificado correctamente...";
+	}
+	//----------------------------------------------------------
+	else{
+		$SQL = "exec AlterDiscosAll ?,?,?,?,?,?";
+		// Execute query:
+	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$bd,&$fn,&$nsize, 
+								&$nmax, &$ngrogro, &$nfn));
+		// Execute query:
+	if( sqlsrv_execute( $stmt ) === false ) {
+          die( print_r( sqlsrv_errors(), true));
+    }
+	echo "Disco modificado correctamente...";
+	}
+	
 }
