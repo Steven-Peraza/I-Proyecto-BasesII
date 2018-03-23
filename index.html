@@ -55,16 +55,28 @@
 
 			<div class="Encabezado"> 
 				<div style="float: right;">
-					<select id="CmbBD">
-						<option value="master">master</option>
-					</select>
-					<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
-												   +'&puerto='+document.getElementById('puerto').value,
-						        					'GET',null,'notificarC');
-						        			cmbBases('CmbFGS');
-						        			cmbBases('CmbFGSM')
-						        			">
-					Conectar</button>
+					<table>
+						<tbody>
+							<tr>
+								<td>Base de Datos</td>
+								<td>
+									<select id="CmbBD">
+										<option value="master">master</option>
+									</select>
+								</td>
+								<td>
+									<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+																+'&puerto='+document.getElementById('puerto').value,
+																	'GET',null,'notificarC');
+															cmbBases('CmbFGS');
+															cmbBases('CmbFGSM');
+															cmbBases('CmbArch')
+															">
+									Conectar</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 				<p id="cabeza">Usuario: IP:: Base de Datos:</p>
 			</div>
@@ -83,6 +95,26 @@
 			</div>
 
 			<div class="Graficos">
+				<table>
+					<tbody>
+						<tr>
+							<td>Archivos: </td>
+							<td>
+								<select id="CmbArch">
+								</select>
+							</td>
+							<td>
+								<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+															+'&puerto='+document.getElementById('puerto').value
+															+'&CmbArch='+document.getElementById('CmbArch').value
+															+'fun=CmbArch',
+																'GET',null,'notificarC')
+															">
+								Grafico</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				<div id="grafiquito">
 					<div name="divCam" id="grafic"></div>
 				</div>

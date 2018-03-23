@@ -120,7 +120,7 @@ div.Graficos {
 
 div.Graficos #grafiquito {
 	width: 100%;
-	height: 41%;
+	height: 43%;
 }
 
 div.seleBD {
@@ -141,6 +141,10 @@ div.main_nav {
 	float: left;	
 	width: 60%;
 	padding-top: 5px;
+}
+
+select {
+	width: 150px;
 }
 
 a {
