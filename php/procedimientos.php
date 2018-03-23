@@ -28,7 +28,7 @@ else if(($_GET['fun'] == 'CmbFGS') || ($_GET['fun'] == 'CmbFGSM')){
         $cmamo2 = FGselection();
 		echo $cmamo2;
     }
-else if($_GET['fun'] == 'CmbFNS'){
+else if($_GET['fun'] == 'CmbArch'){
         $cmamo2 = FNselection();
 		echo $cmamo2;
     }
@@ -51,7 +51,9 @@ else if($_GET['fun'] == 'CmbFNS'){
 									&&( isset($_GET['bd']) && !empty($_GET['bd'])))){
 		ModiFiles($_GET['bd'],$_GET['fname'],$_GET['nsize'],$_GET['nmax'],$_GET['ngrogro'],$_GET['nfn']);
 		}
-
+	else if(($_GET['fun'] == 'FGDB') &&( isset($_GET['fgname']) && !empty($_GET['fgname']))){
+        NewFileGroups($_GET['bd'],$_GET['fgname']);
+    }
 }
 
 //funcion que selecciona la db a utilizar...
@@ -207,7 +209,7 @@ function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
 	
 }
 
-function K/D/A ($fileName){
+function KDA ($fileName){
 	
 	global $conn,$cmamo;
 
@@ -250,7 +252,7 @@ function K/D/A ($fileName){
 		} while (sqlsrv_next_result($resultado));
 		
 		
-	$SQL = "exec CaracSize ?";
+	$SQL = "exec CaracDisp ?";
 	$stmt = sqlsrv_prepare( $conn, $SQL, array(&$fileName));
 		// Execute query:
 	if( sqlsrv_execute( $stmt ) === false ) {

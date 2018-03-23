@@ -52,7 +52,7 @@ function cmbBases(cmbname){
 	cmbAjax(cmbname,null, cambioEstado);
 }
 
-function grafic(gfname, tamMax, tamUso, tamDis, grogro) {
+function grafic(gfname, tamAct,tamMax, tamUso, tamDis, grogro) {
         chart = new CanvasJS.Chart("grafic", {
             animationEnabled: true,
             title:{
@@ -68,7 +68,7 @@ function grafic(gfname, tamMax, tamUso, tamDis, grogro) {
             }],*/
 			 subtitles:[
 				{ //OJO
-					text: "Tamaño Actual: "+ tamUso + "MB",
+					text: "Tamaño Actual: "+ tamAct+ "MB",
 					horizontalAlign: "left"
 				//Uncomment properties below to see how they behave
 				//fontColor: "red",
