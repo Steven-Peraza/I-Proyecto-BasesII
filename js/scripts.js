@@ -8,7 +8,7 @@ var conn = "on";
 //Datos con los que comienza por defecto el usuario
 function defaultPag(){
     document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
-    document.getElementById('CrearArchivos').style.display = "none";
+    //document.getElementById('CrearArchivos').style.display = "none";
 }
 
 //Guardar los datos de logeo globalmente

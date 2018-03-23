@@ -24,6 +24,10 @@ if(isset($_GET['fun'])){
         $cmamo2 = DBselection();
 		echo $cmamo2;
     }
+	else if($_GET['fun'] == 'CmbFGS'){
+        $cmamo2 = FGselection($_GET['bd']);
+		echo $cmamo2;
+    }
 	//llamada al procedimiento almacenado de creacion de filegroups...
 	else if(($_GET['fun'] == 'FGDB') &&( isset($_GET['fgname']) && !empty($_GET['fgname']))){
         NewFileGroups($_GET['bd'],$_GET['fgname']);
@@ -37,11 +41,11 @@ if(isset($_GET['fun'])){
 									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
 									&&( isset($_GET['fgname']) && !empty($_GET['fgname'])
 	)))))))){
-        NewFiles($_GET['bd'],$_GET['fgname'],/*,//,//,//,//])*/);
+        NewFiles($_GET['bd'],$_GET['fgname']/*,,//,//,//,//])*/);
     }
 	else if(($_GET['fun'] == 'MFDB') &&(( isset($_GET['fn']) && !empty($_GET['fn'])
-									&&( isset($_GET['bd']) && !empty($_GET['bd'])))){
-		ModiFiles($_GET['bd'],$_GET['fn'],/*,//,//,//])*/);
+									&&( isset($_GET['bd']) && !empty($_GET['bd']))))){
+		ModiFiles($_GET['bd'],$_GET['fn']/*,//,//,//,//])*/);
 	}
 }
 
@@ -65,6 +69,27 @@ function DBselection(){
 		return $cmamo;
 }
 
+//funcion que selecciona los fgs a utilizar...
+function FGselection($bd){
+	global $conn, $cmamo;
+	$SQL = "use ?
+			SELECT name from sys.filegroups";
+	$params = array(&$bd);
+	// Execute query:
+		$resultado = sqlsrv_query($conn,$SQL,$params) 
+			or die('A error occured: ' . mysql_error());
+		
+		//$row = sqlsrv_fetch_array($resultado, SQLSRV_FETCH_ASSOC);
+        do {
+		   while ($row = sqlsrv_fetch_array($resultado,SQLSRV_FETCH_ASSOC)) {
+			   // Loop through each result set and add to result array
+			   $cmamo = $cmamo . ",". $row['name'];
+		   }
+		} while (sqlsrv_next_result($resultado));
+		
+		//print_r ($cmamo);
+		return $cmamo;
+}
 
 //funcion que crea un nuevo file...
 function NewFileGroups($bd,$fgn){
