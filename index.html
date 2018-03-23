@@ -13,7 +13,7 @@
 	<body onload="defaultPag()">
 
 		<div id="Logeo" class="Login">
-				<table width="300" border="0">
+				<table>
 					<tbody><tr>Login</tr>
 						<tr>
 							<td>Usuario:</td>
@@ -45,7 +45,8 @@
 						        			logDisapper('Logeo');
 
 						        			cmbBases('CmbBD');
-						        			cmbBases('CmbFGS')
+						        			cmbBases('CmbFGS');
+						        			cmbFiles('CmbFGSM')
 						        			">
 				Conectar</button>
 			</div>
@@ -54,9 +55,16 @@
 
 			<div class="Encabezado"> 
 				<div style="float: right;">
-					<select id="CmbBD" onchange="">
+					<select id="CmbBD">
 						<option value="master">master</option>
 					</select>
+					<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+												   +'&puerto='+document.getElementById('puerto').value,
+						        					'GET',null,'notificarC');
+						        			cmbBases('CmbFGS');
+						        			cmbFiles('CmbFGSM')
+						        			">
+					Conectar</button>
 				</div>
 				<p id="cabeza">Usuario: IP:: Base de Datos:</p>
 			</div>
@@ -66,7 +74,7 @@
 			      	<li><a href="#D">Discos</a> 
 			      		<ul>
 			      			<li><a href="#CD" onclick="appearDiv('CrearArchivos')">Crear</a></li>
-			      			<li><a href="#MD" >Modificar</a></li>
+			      			<li><a href="#MD" onclick="appearDiv('ModificarArchivos')">Modificar</a></li>
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GA" onclick="appearDiv('FGS')">Grupos de archivos</a></li>
@@ -79,8 +87,9 @@
 			</div>
 
 			<div name="divCam" id="FGS">
-				<table width="360" border="0">
-				    <tbody><tr>Tabla FGS</tr>
+				<h3>Crear Grupo de Archivos</h1>
+				<table>
+				    <tbody>
 					    <tr>
 					        <td>Nombre del FG:</td>
 					        <td><input type="TEXT" id="fgname"></td>
@@ -97,6 +106,7 @@
 			</div>
 
 			<div name="divCam" id="CrearArchivos">
+				<h3>Crear Archivos</h1>
 				<table>
 					<tbody>
 						<tr>
@@ -106,14 +116,17 @@
 					    <tr>
 					        <td>Tamaño del archivo:</td>
 					        <td><input type="TEXT" id="TamArchivo"></td>
+					        <td>MB</td>
 					    </tr>
 					    <tr>
 					        <td>Tamaño maximo del archivo:</td>
 					        <td><input type="TEXT" id="TamMaxArchivo"></td>
+					        <td>MB</td>
 					    </tr>
 					    <tr>
 					        <td>Crecimiento del archivo:</td>
 					        <td><input type="TEXT" id="CrecArchivo"></td>
+					        <td>MB</td>
 					    </tr>
 					    <tr>
 					    	<td>Grupo de archivo:</td>
@@ -129,32 +142,51 @@
 			    </table>
 			</div>
 
-			<div id="Esqueleto">
-				<table >
-				    <tbody><tr>Tabla nombre</tr>
-					    <tr>
-					        <td>dato:</td>
-					        <td><input type="TEXT" id="idpersona"></td>
+			<div name="divCam" id="ModificarArchivos">
+				<h3>Modificar Archivos</h1>
+				<table>
+					<tbody>
+						<tr>
+					        <td>Nombre del archivo:</td>
+					        <td><input type="TEXT" id="NomArchivoM"></td>
 					    </tr>
 					    <tr>
-					        <td>dato:</td>
-					        <td>
-					        	<select id="tipo">
-					        		<option value="A">A</option>
-					        		<option value="E">B</option>
-					        	</select>
-					    	</td>
+					        <td>Tamaño del archivo:</td>
+					        <td><input type="TEXT" id="TamArchivoM"></td>
+					        <td>MB</td>
 					    </tr>
 					    <tr>
-							<td><select id="CmbBDp" onclick="cmbBases('CmbBDp')">
-									<option value="master">master</option>
+					        <td>Tamaño maximo del archivo:</td>
+					        <td><input type="TEXT" id="TamMaxArchivoM"></td>
+					        <td>MB</td>
+					    </tr>
+					    <tr>
+					        <td>Crecimiento del archivo:</td>
+					        <td><input type="TEXT" id="CrecArchivoM"></td>
+					        <td>MB</td>
+					    </tr>
+					    <tr>
+					    	<td>Grupo de archivo:</td>
+							<td><select id="CmbFGSM" onchange="cmbFiles('CmbFGSM')">
 								</select>
 							</td>
 						</tr>
-						<input type="checkBox" id="Discos" onclick="appearDiv('Discos')" value="Esqueleto">Discos
-					</tbody>
-				</table>
-				<p id="notificar"></p>
+					    <tr>
+					        <td>Direccion de guardado:</td>
+					        <td><input type="text" id="CfgnameM"></td>
+					    </tr>
+					    <tr>
+					    	<td>
+					    		<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
+												   +'&puerto='+document.getElementById('puerto').value
+												   +'&fgname='+document.getElementById('fgname').value
+												   +'&fun=FGDB',
+						        					'GET',null,'notificarfg')">
+								Modificar Archivo</button>
+					    	</td>
+					    </tr>
+				    </tbody>
+			    </table>
 			</div>
 
 			<div id="consultitas" style="background-color: purple;float: left; width: 30%">

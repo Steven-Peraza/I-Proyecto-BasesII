@@ -1,9 +1,9 @@
 //Datos con los que comienza por defecto el usuario
 function defaultPag(){
-    document.getElementById('Esqueleto').style.display = "none"; //Para mostrar o no un div
     document.getElementById('CrearArchivos').style.display = "none";
     document.getElementById('FGS').style.display = "none";
-    
+    document.getElementById('ModificarArchivos').style.display = "none";
+
 }
 
 //Disaparecer el cuadro de logeo despues de logearse
@@ -19,7 +19,7 @@ function appearDiv(v_div){
     var divs = document.getElementsByName('divCam');
     for (var i = 0; i < divs.length; i++) {
         if(divs[i].id != v_div){
-             document.getElementById(v_div).style.display = "none";
+             document.getElementById(divs[i].id).style.display = "none";
         }else{
             document.getElementById(v_div).style.display = "block";
         }
