@@ -97,35 +97,40 @@
 			</div>
 
 			<div name="divCam" id="CrearArchivos">
-				<tr>
-			        <td>Nombre del archivo:</td>
-			        <td><input type="TEXT" id="NomArchivo"></td>
-			    </tr>
-			    <tr>
-			        <td>Tamaño del archivo:</td>
-			        <td><input type="TEXT" id="TamArchivo"></td>
-			    </tr>
-			    <tr>
-			        <td>Tamaño maximo del archivo:</td>
-			        <td><input type="TEXT" id="TamMaxArchivo"></td>
-			    </tr>
-			    <tr>
-			        <td>Crecimiento del archivo:</td>
-			        <td><input type="TEXT" id="CrecArchivo"></td>
-			    </tr>
-			    <tr>
-					<td><select id="CmbFGS" onchange="cmbFiles('CmbFGS')">
-						</select>
-					</td>
-				</tr>
-			    <tr>
-			        <td>Buscar direccion de guardado:</td>
-			        <td><input type="File" id="fgname"></td>
-			    </tr>
+				<table>
+					<tbody>
+						<tr>
+					        <td>Nombre del archivo:</td>
+					        <td><input type="TEXT" id="NomArchivo"></td>
+					    </tr>
+					    <tr>
+					        <td>Tamaño del archivo:</td>
+					        <td><input type="TEXT" id="TamArchivo"></td>
+					    </tr>
+					    <tr>
+					        <td>Tamaño maximo del archivo:</td>
+					        <td><input type="TEXT" id="TamMaxArchivo"></td>
+					    </tr>
+					    <tr>
+					        <td>Crecimiento del archivo:</td>
+					        <td><input type="TEXT" id="CrecArchivo"></td>
+					    </tr>
+					    <tr>
+					    	<td>Grupo de archivo:</td>
+							<td><select id="CmbFGS" onchange="cmbFiles('CmbFGS')">
+								</select>
+							</td>
+						</tr>
+					    <tr>
+					        <td>Buscar direccion de guardado:</td>
+					        <td><input type="text" id="Cfgname"></td>
+					    </tr>
+				    </tbody>
+			    </table>
 			</div>
 
 			<div id="Esqueleto">
-				<table width="360" border="0">
+				<table >
 				    <tbody><tr>Tabla nombre</tr>
 					    <tr>
 					        <td>dato:</td>
