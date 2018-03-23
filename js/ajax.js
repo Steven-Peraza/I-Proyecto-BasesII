@@ -42,8 +42,8 @@ function borrarNotificaciones(idNotificacion)
 }
 
 function logMsj(){
-     document.getElementById('cabeza'),innerHTML = "Usuario: "+ document.getElementById('idusu').value 
+     document.getElementById('cabeza').innerHTML = "Usuario: "+ document.getElementById('idusu').value 
                                                  +"IP:"+document.getElementById('ip').value
                                                  +":"+document.getElementById('puerto').value
-                                                 +" Base de Datos: " + document.getElementById('bd').value;
+                                                 +" Base de Datos: " + document.getElementById('CmbBD').value;
 }
