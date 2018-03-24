@@ -8,7 +8,7 @@
 
 function conexion($bd,$usuario,$pass,$ip,$puerto){
 	//se reciben los parámetros y se les asigna a las sig vars
-    $serverName = "$ip , $puerto"; 
+    $serverName = "$ip"; 
 	$uid = "$usuario";   
 	$pwd = "$pass";  
 	$databaseName = "$bd"; 

@@ -20,7 +20,7 @@ function updateCombos(){
 
 //Disaparecer el cuadro de logeo despues de logearse
 function logDisapper(v_div){
-    if(flag == "Conexion Completa"){
+    if(flag != "Conexion Completa"){
         document.getElementById(v_div).style.display = "none";
         document.getElementById('manta').style.display = "block";
     }
