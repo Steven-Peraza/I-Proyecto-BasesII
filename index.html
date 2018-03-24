@@ -11,10 +11,11 @@
 	    <link rel="stylesheet" type="text/css" href="css/styles.css">
 	</head>
 	<body onload="defaultPag()">
-
+<!-- Div contenedor del login incial -->
 		<div id="Logeo" class="Login">
-			<table>
-				<tbody><tr>Login</tr>
+			<table class="estiloTabla">
+				<tbody>
+					<tr>Login</tr>
 					<tr>
 						<td>Usuario:</td>
 						<td><input type="text" id="idusu"></td>
@@ -22,17 +23,12 @@
 					<tr>
 						<td>Contraseña:</td>
 						<td><input type="password" id="contraUsu"></td>
-						<td>Tipo:</td>
-				        <td>
-				        	<select id="tipo">
-				        		<option value="SQL">MySQL</option>
-				        		<option value="Post">Postgres</option>
-				        	</select>
-				    	</td>
 					</tr>
 					<tr>
 						<td>IP Server:</td>
 						<td><input type="text" id="ip"></td>
+					</tr>
+					<tr>
 						<td>Puerto:</td>
 						<td><input type="text" id="puerto"></td>
 					</tr>
@@ -45,22 +41,19 @@
 					        			logDisapper('Logeo');
 
 					        			cmbBases('CmbBD');
-					        			cmbBases('CmbFGS');
-					        			cmbBases('CmbFGSM');
-										cmbBases('CmbArch')
-
+					        			updateCombos()
 					        			">
 			Conectar</button>
 		</div>
-
+<!-- Div que contiene todos los principal donde se alojan todos los contenedores de funciones -->
 		<div class="Principal">
-
+<!-- Muestra los datos del usuario actual, servidor ingresado, y base usada actualmente -->
 			<div class="Encabezado"> 
 				<div style="float: right;">
-					<table>
+					<table class="estiloTabla">
 						<tbody>
 							<tr>
-								<td>Base de Datos</td>
+								<td>Base de Datos: </td>
 								<td>
 									<select id="CmbBD">
 										<option value="master">master</option>
@@ -68,12 +61,11 @@
 								</td>
 								<td>
 									<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
-																+'&puerto='+document.getElementById('puerto').value,
-																	'GET',null,'notificarC');
-															cmbBases('CmbFGS');
-															cmbBases('CmbFGSM');
-															cmbBases('CmbArch')
-															">
+																	   +'&puerto='+document.getElementById('puerto').value,
+																'GET',null,'notificarC');
+																
+																updateCombos()
+																">
 									Conectar</button>
 								</td>
 							</tr>
@@ -82,7 +74,7 @@
 				</div>
 				<p id="cabeza">Usuario: IP:: Base de Datos:</p>
 			</div>
-
+<!-- Div que contiene el navegador para abrir cada una de las opciones de la pagina -->
 			<div id="main_nav">
 				<ul>
 			      	<li><a href="#D">Discos</a> 
@@ -92,21 +84,22 @@
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GA" onclick="appearDiv('FGS')">Grupos de archivos</a></li>
-			      	<li><a href="#G" onclick="appearDiv('Graphics')">Graficos</a></li>
+			      	<li><a href="#G" onclick="appearDiv('Graficos')">Graficos</a></li>
 		    	</ul>
 			</div>
-
-			<div class="espaciado"></div>
-
+<!-- Div que muestra información en consola de lo ejecutado -->
 			<div class="lateral">
 				<div class="consultitas">
 					<h1>Consola</h1>
 					<p id="notificarC"></p>
 				</div>
 			</div>
+<!-- Div meramente estetico -->
+			<div class="espaciado"></div>
+<!--  -->
 			<div name="divCam" id="FGS">
-				<h3>Crear Grupo de Archivos</h1>
-				<table>
+				<h1>Crear Grupo de Archivos</h1>
+				<table class="estiloTabla">
 				    <tbody>
 					    <tr>
 					        <td>Nombre del FG:</td>
@@ -126,9 +119,10 @@
 				</table>
 				<p id="notificarfg"></p>
 			</div>
-
-			<div name="divCam" id='Graphics' class="Graficos">
-				<table>
+<!--  -->
+			<div name="divCam" id='Graficos'>
+				<h1>Grafico</h1>
+				<table class="estiloTabla">
 					<tbody>
 						<tr>
 							<td>Archivos: </td>
@@ -140,7 +134,9 @@
 								<button name="btn" onclick="fillGrafic(
 															document.getElementById('CmbArch').value,
 															'GGWP'+'&fname='+document.getElementById('CmbArch').value
-															)">
+															);
+															updateCombos()
+															">
 								Grafico</button>
 							</td>
 						</tr>
@@ -148,10 +144,10 @@
 				</table>
 				<div id="grafic"></div>
 			</div>
-
+<!--  -->
 			<div name="divCam" id="CrearArchivos">
-				<h3>Crear Archivos</h1>
-				<table>
+				<h1>Crear Archivos</h1>
+				<table class="estiloTabla">
 					<tbody>
 						<tr>
 					        <td>Nombre del archivo:</td>
@@ -169,7 +165,7 @@
 					    </tr>
 					    <tr>
 					        <td>Crecimiento del archivo:</td>
-					        <td><input type="TEXT" id="CrecArchivo"></td>
+					        <td><input type="TEXT" id="CreciArchivo"></td>
 					        <td>MB</td>
 					    </tr>
 					    <tr>
@@ -193,21 +189,25 @@
 													   +'&grogro='+document.getElementById('CreciArchivo').value
 													   +'&path='+document.getElementById('path').value
 													   +'&fun=NFDB',
-														'GET',null,'notificarC')">
+														'GET',null,'notificarC');
+														updateCombos()">
 								Crear FG</button>
 							</td>
 						</tr>
 				    </tbody>
 			    </table>
 			</div>
-
+<!--  -->
 			<div name="divCam" id="ModificarArchivos">
-				<h3>Modificar Archivos</h1>
-				<table>
+				<h1>Modificar Archivos</h1>
+				<table class="estiloTabla">
 					<tbody>
 						<tr>
 					        <td>Nombre del archivo:</td>
-					        <td><input type="TEXT" id="NomArchivoM"></td>
+					        <td>
+					        	<select id="CmbArchM">
+								</select>
+					        </td>
 					    </tr>
 					    <tr>
 					        <td>Tamaño del archivo:</td>
@@ -221,7 +221,7 @@
 					    </tr>
 					    <tr>
 					        <td>Crecimiento del archivo:</td>
-					        <td><input type="TEXT" id="CrecArchivoM"></td>
+					        <td><input type="TEXT" id="CreciArchivoM"></td>
 					        <td>MB</td>
 					    </tr>
 					    <tr>
@@ -239,13 +239,14 @@
 					    		<button name="btn" onclick="getAjax('ip='+document.getElementById('ip').value
 												   +'&puerto='+document.getElementById('puerto').value
 												   +'&fgname='+document.getElementById('CmbFGSM').value
-													   +'&fname='+document.getElementById('NomArchivoM').value
+													   +'&fname='+document.getElementById('CmbArchM').value
 													   +'&nsize='+document.getElementById('TamArchivoM').value
 													   +'&nmax='+document.getElementById('TamMaxArchivoM').value
 													   +'&ngrogro='+document.getElementById('CreciArchivoM').value
 													   +'&nfn='+document.getElementById('CfgnameM').value
 													   +'&fun=MFDB',
-						        					'GET',null,'notificarC')">
+						        					'GET',null,'notificarC');
+						        					updateCombos()">
 								Modificar Archivo</button>
 					    	</td>
 					    </tr>

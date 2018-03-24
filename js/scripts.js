@@ -3,6 +3,14 @@ function defaultPag(){
     document.getElementById('CrearArchivos').style.display = "none";
     document.getElementById('FGS').style.display = "none";
     document.getElementById('ModificarArchivos').style.display = "none";
+    document.getElementById('Graficos').style.display = "none";
+}
+
+function updateCombos(){
+    cmbBases('CmbFGS');
+    cmbBases('CmbFGSM');
+    cmbBases('CmbArch');
+    cmbBases('CmbArchM');
 
 }
 
@@ -61,6 +69,8 @@ function fillGrafic(cmbname,fun){
 			console.log(this.responseText);
             grafic(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
 					parseFloat(obj_marcas[4]), parseFloat(obj_marcas[2]));
+            update(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
+                    parseFloat(obj_marcas[4]), parseFloat(obj_marcas[2]));
         }
     };
 	cmbAjax(fun,null, cambioEstado);
