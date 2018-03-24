@@ -45,7 +45,8 @@ else if($_GET['fun'] == 'CmbArch'){
 									&&( isset($_GET['bd']) && !empty($_GET['bd'])
 									&&( isset($_GET['path']) && !empty($_GET['path'])
 	)))))))){
-        NewFiles($_GET['bd'],$_GET['fname'],$_GET['path'],$_GET['size'],$_GET['max'],$_GET['grogro'],$_GET['fgname']);
+        print_r("Mierda...");
+		NewFiles($_GET['bd'],$_GET['fname'],$_GET['path'],$_GET['size'],$_GET['max'],$_GET['grogro'],$_GET['fgname']);
     }
 	else if(($_GET['fun'] == 'MFDB') &&( isset($_GET['fname']) && !empty($_GET['fname'])
 									&&( isset($_GET['bd']) && !empty($_GET['bd'])))){

@@ -79,7 +79,7 @@ function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
 					horizontalAlign: "left",
 				//Uncomment properties below to see how they behave
 				//fontColor: "red",
-					fontSize: 10
+					fontSize: 15
 				},
 				 
 				{
@@ -87,7 +87,7 @@ function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
 					horizontalAlign: "left",
 					//Uncomment properties below to see how they behave
 					//fontColor: "red",
-					fontSize: 10
+					fontSize: 15
 				},
 				{
 					text: "Crecimiento: "+ grogro + "MB",
