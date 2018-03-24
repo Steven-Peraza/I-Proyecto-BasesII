@@ -87,24 +87,18 @@ function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
 				{
 					text: "Tamaño Actual: "+ tamAct+ "MB",
 					horizontalAlign: "left",
-				//Uncomment properties below to see how they behave
-				//fontColor: "red",
-					fontSize: 10
+					fontSize: 15
 				},
 				 
 				{
 					text: "Tamaño Maximo: "+ tamMax + "MB",
 					horizontalAlign: "left",
-					//Uncomment properties below to see how they behave
-					//fontColor: "red",
-					fontSize: 10
+					fontSize: 15
 				},
 				{
 					text: "Crecimiento: "+ grogro + "MB",
 					horizontalAlign: "left",
-					//Uncomment properties below to see how they behave
-					//fontColor: "red",
-					fontSize: 10
+					fontSize: 15
 				}
 				],
             data: [{
