@@ -92,7 +92,7 @@
 			      		</ul>
 			      	</li>
 			      	<li><a href="#GA" onclick="appearDiv('FGS')">Grupos de archivos</a></li>
-			      	<li><a href="#G" onclick="appearDiv('Graficos')">Graficos</a></li>
+			      	<li><a href="#G" onclick="appearDiv('Graphics')">Graficos</a></li>
 		    	</ul>
 			</div>
 
@@ -127,21 +127,25 @@
 				<p id="notificarfg"></p>
 			</div>
 
-			<div name="divCam" id='Graficos'>
-				<tr>
-					<td>Archivos: </td>
-					<td>
-						<select id="CmbArch">
-						</select>
-					</td>
-					<td>
-						<button name="btn" onclick="fillGrafic(
-													document.getElementById('CmbArch').value,
-													'GGWP'+'&fname='+document.getElementById('CmbArch').value
-													)">
-						Grafico</button>
-					</td>
-				</tr>
+			<div name="divCam" id='Graphics' class="Graficos">
+				<table>
+					<tbody>
+						<tr>
+							<td>Archivos: </td>
+							<td>
+								<select id="CmbArch">
+								</select>
+							</td>
+							<td>
+								<button name="btn" onclick="fillGrafic(
+															document.getElementById('CmbArch').value,
+															'GGWP'+'&fname='+document.getElementById('CmbArch').value
+															)">
+								Grafico</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				<div id="grafic"></div>
 			</div>
 
