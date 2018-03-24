@@ -1,11 +1,15 @@
+var x;
+var flag = "";
+
 //Datos con los que comienza por defecto el usuario
 function defaultPag(){
     document.getElementById('CrearArchivos').style.display = "none";
     document.getElementById('FGS').style.display = "none";
     document.getElementById('ModificarArchivos').style.display = "none";
     document.getElementById('Graficos').style.display = "none";
+    document.getElementById('manta').style.display = "none";
 }
-
+//Actualizar los combos para no perder datos
 function updateCombos(){
     cmbBases('CmbFGS');
     cmbBases('CmbFGSM');
@@ -16,13 +20,14 @@ function updateCombos(){
 
 //Disaparecer el cuadro de logeo despues de logearse
 function logDisapper(v_div){
-    if(true == true){
+    if(flag == "Conexion Completa"){
         document.getElementById(v_div).style.display = "none";
-    }else{
-        document.getElementById(v_div).style.display = "block";
+        document.getElementById('manta').style.display = "block";
     }
+    document.getElementById('manta').style.display = "block";
 }
 
+//Hace que el div elegido aparezca para realizar funciones y los demás desaparescan
 function appearDiv(v_div){
     var divs = document.getElementsByName('divCam');
     for (var i = 0; i < divs.length; i++) {
@@ -34,6 +39,7 @@ function appearDiv(v_div){
     }
 }
 
+//Esta funcion llena los combos con la información que solicita atravez de el parametro cmbname
 function cmbBases(cmbname){
 	cambioEstado = function ()
     {
@@ -46,7 +52,7 @@ function cmbBases(cmbname){
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
             obj_marcas=this.responseText.split(",");
-            for (var i in obj_marcas)
+            for (var i = 1; i < obj_marcas.length; i++)
             {
                 var nodoOption = document.createElement("option");
                 var textnode = document.createTextNode(obj_marcas[i]);
@@ -54,12 +60,14 @@ function cmbBases(cmbname){
                 nodoOption.appendChild(textnode);
                 nodoSelect.appendChild(nodoOption);
             }
+			flag = obj_marcas[0];
+			console.log(flag);
         }
     };
 	cmbAjax(cmbname,null, cambioEstado);
 }
 
-
+//Recupera los datos para el grafico y luego llama a las funciones para mostrar el grafico
 function fillGrafic(cmbname,fun){
 	cambioEstado = function ()
     {
@@ -67,6 +75,7 @@ function fillGrafic(cmbname,fun){
         {
             obj_marcas=this.responseText.split(",");
 			console.log(this.responseText);
+			clearInterval(x);
             grafic(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
 					parseFloat(obj_marcas[4]), parseFloat(obj_marcas[2]));
             update(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
@@ -76,6 +85,7 @@ function fillGrafic(cmbname,fun){
 	cmbAjax(fun,null, cambioEstado);
 }
 
+//Crear un cavas para grafico para mostrar el la pagina
 function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
         chart = new CanvasJS.Chart("grafic", {
             animationEnabled: true,
@@ -119,8 +129,9 @@ function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
         chart.render();
 }
 
+// hacer actualizacion del metodo grafic cada 10 segundos 
 function update(gfname, tamMax, tamUso, tamDis, grogro){
-    var x = setInterval(function() {
+    x = setInterval(function() {
         grafic(gfname, tamMax, tamUso, tamDis, grogro);
-    }, 12000);
+    }, 10000);
 }

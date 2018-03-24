@@ -6,18 +6,6 @@ body {
     background-color: #EDEAD0;
 }
 
-div.boby::after {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-    background-color: rgba(0,0,0,0.5);
-}
-
-
 div.Principal {
 	float: top;
 	overflow: auto;
@@ -108,13 +96,19 @@ div.Login {
     line-height: 50px;
     padding: 1%;
     position: fixed;
-    top: 50%; 
+    top: 40%; 
     left: 50%;
     margin-top: -100px;
     margin-left: -225px;
-    background-color: #f1c40f;
-    border-radius: 15px;
+    background-color: #b30059;
+    border-radius: 40px;
+    border : 10px;
+    border-style: outset;
     text-align: center;
+    border-top-color: #FE2E9A; 
+    border-left-color: #FE2E9A;
+    border-bottom-color: #660033;
+    border-right-color: #660033;  
     z-index: 11; /* 1px higher than the overlay layer */
 }
 
@@ -241,6 +235,7 @@ ul {
 	opacity: 1;
 }
 
+/*Dar estilo a los items input, select, button y tamaño a el table y sus atributos*/
 .estiloTabla table {
 	float : left;
 	padding: 0;
@@ -277,9 +272,6 @@ ul {
 .estiloTabla  button, .Login button {
 	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 10pt;
-
-	width: 150px;
-	height: 40px;
 	border-left: solid 5px;
 	border-bottom: solid 5px;
 	border-left-color: #660033;
@@ -294,4 +286,9 @@ ul {
 	border-right-color: #660033;
 	border-top-color: #660033;
 	background-color: #b30059;
+}
+
+.estiloTabla input:focus, .estiloTabla select:focus {
+	border: solid 2px;
+	border-radius: 10px;
 }

@@ -1,3 +1,4 @@
+//Crear una conexion con el php para realizar las funciones
 function getAjax(url,tipo,parametros,idNotificacion)
 {
     borrarNotificaciones(idNotificacion);
@@ -21,7 +22,7 @@ function getAjax(url,tipo,parametros,idNotificacion)
 }
 
 
-
+//Crear una conexion con el php para llenar los combos de datos
 function cmbAjax(url,parametros, cambioEstado)
 {
     url = 'php/procedimientos.php?fun=' + url + "&usuario="+document.getElementById('idusu').value
@@ -36,12 +37,13 @@ function cmbAjax(url,parametros, cambioEstado)
     xhttp.send(parametros);
 }
 
-
+//Borrar la informacion que tenga la "consola", es decir, el parrafo llamado notificacarC
 function borrarNotificaciones(idNotificacion)
 {
     document.getElementById(idNotificacion).innerHTML = "";
 }
 
+//Actualizar con la base de datos y usuario ingresado actualmente
 function logMsj(){
      document.getElementById('cabeza').innerHTML = "Usuario: "+ document.getElementById('idusu').value 
                                                  +" IP: "+document.getElementById('ip').value

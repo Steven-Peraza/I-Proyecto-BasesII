@@ -11,7 +11,6 @@
 	    <link rel="stylesheet" type="text/css" href="css/styles.css">
 	</head>
 	<body onload="defaultPag()">
-<div class="boby" id="manta">
 <!-- Div contenedor del login incial -->
 		<div id="Logeo" class="Login">
 			<table class="estiloTabla">
@@ -46,6 +45,8 @@
 					        			">
 			Conectar</button>
 		</div>
+<!-- Div que contiene toda la pagina de funciones para realizar un efecto de cambio de pagina -->	
+<div class="boby" id="manta">
 <!-- Div que contiene todos los principal donde se alojan todos los contenedores de funciones -->
 		<div class="Principal">
 <!-- Muestra los datos del usuario actual, servidor ingresado, y base usada actualmente -->
@@ -97,7 +98,7 @@
 			</div>
 <!-- Div meramente estetico -->
 			<div class="espaciado"></div>
-<!--  -->
+<!-- Div con la informacion para crear un filegruop  -->
 			<div name="divCam" id="FGS">
 				<h1>Crear Grupo de Archivos</h1>
 				<table class="estiloTabla">
@@ -120,7 +121,7 @@
 				</table>
 				<p id="notificarfg"></p>
 			</div>
-<!--  -->
+<!-- Div que contiene el grafico con la informacion del archivo elegido -->
 			<div name="divCam" id='Graficos'>
 				<h1>Grafico</h1>
 				<table class="estiloTabla">
@@ -135,8 +136,7 @@
 								<button name="btn" onclick="fillGrafic(
 															document.getElementById('CmbArch').value,
 															'GGWP'+'&fname='+document.getElementById('CmbArch').value
-															);
-															updateCombos()
+															)
 															">
 								Grafico</button>
 							</td>
@@ -145,7 +145,7 @@
 				</table>
 				<div id="grafic"></div>
 			</div>
-<!--  -->
+<!-- Div con la informacion para crear un archivo -->
 			<div name="divCam" id="CrearArchivos">
 				<h1>Crear Archivos</h1>
 				<table class="estiloTabla">
@@ -198,7 +198,7 @@
 				    </tbody>
 			    </table>
 			</div>
-<!--  -->
+<!-- Div con la informacion para modificar un archivo -->
 			<div name="divCam" id="ModificarArchivos">
 				<h1>Modificar Archivos</h1>
 				<table class="estiloTabla">

@@ -24,5 +24,6 @@ function conexion($bd,$usuario,$pass,$ip,$puerto){
 	if (!$conn) {
 		die('Algo fue mal mientras se conectaba a MSSQL');
 	}
+	print_r ("Conexion Completa");
 	return $conn;
 }
