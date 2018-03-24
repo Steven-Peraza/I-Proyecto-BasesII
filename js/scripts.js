@@ -59,7 +59,8 @@ function fillGrafic(cmbname,fun){
         {
             obj_marcas=this.responseText.split(",");
 			console.log(this.responseText);
-            grafic(cmbname, obj_marcas[1], obj_marcas[3], obj_marcas[5], obj_marcas[4], obj_marcas[2]);
+            grafic(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
+					parseFloat(obj_marcas[4]), parseFloat(obj_marcas[2]));
         }
     };
 	cmbAjax(fun,null, cambioEstado);
@@ -102,12 +103,12 @@ function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
                 radius: "90%",
                 innerRadius: "55%",
                 indexLabelFontSize: 17,
-                explodeOnClick: false,
+                explodeOnClick: true,
                 indexLabel: "{label} - #percent%",
                 toolTipContent: "<b>{label}:</b> {y} (#percent%)",
                 dataPoints: [
-                    { y: parseInt(tamUso), label: "Espacio Usado" },
-                    { y: parseInt(tamDis), label: "Espacio Disponible" }
+                    { y: tamUso, label: "Espacio Usado" },
+                    { y: tamDis, label: "Espacio Disponible" }
                 ]
             }]
         });
