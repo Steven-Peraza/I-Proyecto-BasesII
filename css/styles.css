@@ -3,13 +3,12 @@
 margin: top left bottom right;
 */
 body {
-    background-color: lightblue;
-    float: top;
+    background-color: #EDEAD0;
 }
 
-body:after {
+div.boby::after {
     display: block;
-    position: fixed; // could also be absolute 
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -275,7 +274,7 @@ ul {
 	background-color: #eee;
 }
 
-.estiloTabla  button {
+.estiloTabla  button, .Login button {
 	font-family: "Lucida Console", Monaco, monospace;
 	font-size: 10pt;
 
@@ -289,11 +288,10 @@ ul {
 	background-color: #FE2E9A;
 }
 
-.estiloTabla button:active {
+.estiloTabla button:active, .Login button:active {
 	border-right: solid 5px;
 	border-top: solid 5px;
 	border-right-color: #660033;
 	border-top-color: #660033;
-	
 	background-color: #b30059;
 }
