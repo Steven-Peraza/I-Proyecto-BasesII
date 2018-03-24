@@ -41,7 +41,7 @@ else if(($_GET['fun'] == 'CmbFGS') || ($_GET['fun'] == 'CmbFGSM')){
 		echo $cmamo2;
     }
 //si la funcion 'fun' es de tipo 'CmbArch'  se llama a la funcion de selección de Files
-else if($_GET['fun'] == 'CmbArch'){
+else if(($_GET['fun'] == 'CmbArch') || ($_GET['fun'] == 'CmbArchM')){
         $cmamo2 = FNselection();
 		echo $cmamo2;
     }
@@ -232,7 +232,6 @@ function ModiFiles($bd,$fname,$nsize,$nmax,$ngrogro,$nfn){
     }
 	echo "Disco modificado correctamente...";
 	}
-	
 }
 //funcion que retorna los valores necesarios para las estadísticas requeridas para este trabajo
 //solamente se requiere del nombre del archivo a saber sus datos..

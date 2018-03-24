@@ -1,3 +1,6 @@
+var x;
+var flag = "";
+
 //Datos con los que comienza por defecto el usuario
 function defaultPag(){
     document.getElementById('CrearArchivos').style.display = "none";
@@ -16,7 +19,7 @@ function updateCombos(){
 
 //Disaparecer el cuadro de logeo despues de logearse
 function logDisapper(v_div){
-    if(true == true){
+    if(flag != "Conexion Completa"){
         document.getElementById(v_div).style.display = "none";
     }else{
         document.getElementById(v_div).style.display = "block";
@@ -46,7 +49,7 @@ function cmbBases(cmbname){
             nodoSelect.id=cmbname;
             nodoPadre_marcas.appendChild(nodoSelect);
             obj_marcas=this.responseText.split(",");
-            for (var i in obj_marcas)
+            for (var i = 1; i < obj_marcas.length; i++)
             {
                 var nodoOption = document.createElement("option");
                 var textnode = document.createTextNode(obj_marcas[i]);
@@ -54,6 +57,8 @@ function cmbBases(cmbname){
                 nodoOption.appendChild(textnode);
                 nodoSelect.appendChild(nodoOption);
             }
+			flag = obj_marcas[0];
+			console.log(flag);
         }
     };
 	cmbAjax(cmbname,null, cambioEstado);
@@ -67,6 +72,7 @@ function fillGrafic(cmbname,fun){
         {
             obj_marcas=this.responseText.split(",");
 			console.log(this.responseText);
+			clearInterval(x);
             grafic(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
 					parseFloat(obj_marcas[4]), parseFloat(obj_marcas[2]));
             update(cmbname, parseFloat(obj_marcas[1]), parseFloat(obj_marcas[3]), parseFloat(obj_marcas[5]), 
@@ -120,7 +126,7 @@ function grafic(gfname, tamAct, tamMax, tamUso, tamDis, grogro) {
 }
 
 function update(gfname, tamMax, tamUso, tamDis, grogro){
-    var x = setInterval(function() {
+    x = setInterval(function() {
         grafic(gfname, tamMax, tamUso, tamDis, grogro);
     }, 12000);
 }
